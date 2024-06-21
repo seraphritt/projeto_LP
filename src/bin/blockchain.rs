@@ -1,34 +1,26 @@
-use chrono :: Utc;
-use sha2::{Sha256, Digest};
+use chrono::Utc;
+use sha2::{Digest, Sha256};
 use std::hash::{Hash, Hasher};
 
-fn calculate_hash<T: Hash>(t: &T) -> String {
-    let mut hasher = Sha256::new();
-    let mut state = std::collections::hash_map::DefaultHasher::new();
-    t.hash(&mut state);
-    let hash_value = state.finish().to_ne_bytes();
-    hasher.update(&hash_value);
-    let result = hasher.finalize();
-    hex::encode(result)
-}
-struct Block{
+const DIFFICULTY: usize = 3; // dificuldade do proof of work da blockchain
+#[derive(Debug)]
+struct Block {
     index: u64,
     timestamp: String,
     proof: u64,
-    previous_hash: String
+    previous_hash: String,
 }
 
-impl Block{
-    pub fn new(proof: u64, index: u64, previous_hash: String)-> Self{
+impl Block {
+    pub fn new(proof: u64, index: u64, previous_hash: String) -> Self {
         Block {
-            proof,
             index,
             timestamp: Utc::now().to_rfc2822(),
-            previous_hash
+            proof,
+            previous_hash,
         }
     }
 }
-
 impl Hash for Block {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.index.hash(state);
@@ -37,85 +29,88 @@ impl Hash for Block {
         self.previous_hash.hash(state);
     }
 }
-
-struct Blockchain{
-    chain: Vec<Block>
+struct Blockchain {
+    chain: Vec<Block>,
 }
-impl Blockchain{
-    pub fn new() -> Self{
+
+impl Blockchain {
+    pub fn new() -> Self {
+        let genesis_block = Block::new(1, 0, String::from("0"));
         Blockchain {
-            chain: vec![Block::new(1, 0, String::from("0"))]
+            chain: vec![genesis_block],
         }
     }
-
-    fn create_block(&mut self, proof: u64, previous_hash: String){
-        let block = Block::new(proof, self.chain.len() as u64, previous_hash);
-        self.chain.push(block);
+    pub fn create_block(&mut self, proof: u64, previous_hash: String) {
+        let index = self.chain.len() as u64;
+        let new_block = Block::new(proof, index, previous_hash);
+        self.chain.push(new_block);
     }
-
-    fn print_previous_block(&self){
-        match self.chain.last(){
-            Some(block) => println!("Block: {}\nTime: {}\nProof: {}\nLast block: {}",
-                                    block.index,
-                                    block.timestamp,
-                                    block.proof,
-                                    block.previous_hash),
-            None => println!("There is no block in the chain")
+    pub fn print_previous_block(&self) {
+        if let Some(block) = self.chain.last() {
+            println!("Previous Block: {:?}", block);
+        } else {
+            println!("Blockchain is empty.");
         }
     }
-
-    fn proof_of_work(&self, last_proof: u64){
-        let mut new_proof : u64 = 1;
-        let mut check_proof : bool = false;
-        let (mut hash_num, mut hash_string): (u64, String);
-        let five_zeros = String::from("00000");
-
-        while !check_proof {
-            hash_num = new_proof.pow(2)-last_proof.pow(2);
-            hash_string = calculate_hash(&hash_num);
-            if hash_string[0..5] == five_zeros {
-                check_proof = true;
-            }
-            else{
-                new_proof += 1;
-            }
+    pub fn proof_of_work(&self, last_proof: u64) -> u64 {
+        let mut proof = 0;
+        while !self.is_valid_proof(last_proof, proof) {
+            proof += 1;
         }
+        proof
     }
+    fn is_valid_proof(&self, last_proof: u64, proof: u64) -> bool {
+        let guess = format!("{}{}", last_proof, proof);
+        let guess_hash = Blockchain::hash_string(&guess);
+        println!("Proof{}", guess_hash);
+        guess_hash.starts_with(&String::from("0").repeat(DIFFICULTY))
+    }
+    pub fn is_chain_valid(&self) -> bool {
+        let mut previous_block = &self.chain[0];
+        let mut index = 1;
 
-    fn is_chain_valid(&self, chain: Vec<Block>) -> bool{
-        let mut last_block = &chain[0];
-        let mut block;
-        let mut block_index : usize = 1;
-        let mut last_proof;
-        let mut proof;
-        let mut hash_string;
-        let five_zeros = String::from("00000");
-        let mut hash_num: u64;
-
-        while block_index < chain.len(){
-            block = &chain[block_index];
-            if block.previous_hash != calculate_hash(&last_block) {
+        while index < self.chain.len() {
+            let current_block = &self.chain[index];
+            if current_block.previous_hash != Blockchain::hash_block(previous_block) {
                 return false;
-            } 
-            last_proof = last_block.proof;
-            proof = block.proof;
-            hash_num = proof.pow(2)-(&last_proof).pow(2);
-
-            hash_string = calculate_hash(&hash_num);
-
-            if hash_string[0..5] != five_zeros {
+            }
+            if !self.is_valid_proof(previous_block.proof, current_block.proof) {
                 return false;
             }
 
-            last_block = block;
-            block_index += 1;
+            previous_block = current_block;
+            index += 1;
         }
-        return true;
+        true
+    }
+    fn hash_block(block: &Block) -> String {
+        let block_string = format!(
+            "{}{}{}{}",
+            block.index, block.timestamp, block.proof, block.previous_hash
+        );
+        Blockchain::hash_string(&block_string)
+    }
+    fn hash_string(input: &str) -> String {
+        let mut hasher = Sha256::new();
+        hasher.update(input.as_bytes());
+        let result = hasher.finalize();
+        hex::encode(result)
     }
 }
 
-fn main(){
-    let mut bc = Blockchain::new();
-    bc.create_block(1, String::from("abc"));
-    bc.print_previous_block();
+fn main() {
+    // o blockchain já vem com um bloco padrão, chamado genesis block
+    let mut blockchain = Blockchain::new();
+    for _ in 0..4 {
+        let last_proof = blockchain.chain.last().unwrap().proof;
+        let proof = blockchain.proof_of_work(last_proof);
+        let previous_hash = Blockchain::hash_block(blockchain.chain.last().unwrap());
+        blockchain.create_block(proof, previous_hash);
+    }
+    // como tem o derive(Debug), ele consegue imprimir cada bloco da blockchain
+    for block in &blockchain.chain {
+        println!("{:?}", block);
+    }
+    println!("Is blockchain valid? {}", blockchain.is_chain_valid());
+    println!("{:?}", blockchain.chain)
 }
