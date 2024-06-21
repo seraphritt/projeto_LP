@@ -107,6 +107,8 @@ fn main() {
         let previous_hash = Blockchain::hash_block(blockchain.chain.last().unwrap());
         blockchain.create_block(proof, previous_hash);
     }
+    // exemplo de criação de um bloco que não passou pelo proof of work, fazendo assim com que a blockchain fique invalidada
+    blockchain.create_block(10, String::from("4f607389fe5630ad233e04a316e12bf864329551f19c180de9805a3e337de57f"));
     // como tem o derive(Debug), ele consegue imprimir cada bloco da blockchain
     for block in &blockchain.chain {
         println!("{:?}", block);
