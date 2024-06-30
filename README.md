@@ -14,6 +14,6 @@ Blockchain e Criptomoedas, implementadas através da linguagem [Rust](https://ww
 
 O Blockchain consiste num registro público de todas as transações de um determinado tipo, organizado em blocos conectados de forma encadeada, garantindo transparência, imutabilidade e segurança.
 
-Já as Criptomoedas consistem numa forma de dinheiro digital descentralizado que utiliza criptografia para garantir transações seguras e para controlar a criação de novas unidades. Utiliza-se da Blockchain para garantir descentralização.
+Já as Criptomoedas consistem numa forma de dinheiro digital descentralizado que utiliza criptografia para garantir transações seguras e para controlar a criação de novas unidades. Utiliza-se da Blockchain para garantir a descentralização.
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/seraphritt/projeto_LP/issues)
