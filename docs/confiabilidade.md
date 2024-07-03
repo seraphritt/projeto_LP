@@ -4,7 +4,6 @@
 
 Rust realiza verificação de tipos em tempo de compilação de forma rigorosa, o que ajuda a capturar muitos erros comuns antes mesmo de executar o programa.
 
-
 Em Rust:
 ```rust
 fn main() {
