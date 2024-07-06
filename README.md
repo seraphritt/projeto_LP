@@ -1,19 +1,16 @@
-# Projeto de LP
 
-Blockchain e Criptomoedas, implementadas através da linguagem [Rust](https://www.rust-lang.org/pt-BR).
+### rpcjson
 
-## Integrantes
+https://github.com/paritytech/jsonrpc
 
-- Bruno Berto de Oliveira Ribeiro (200061089)
-- Isaque Augusto da Silva Santos (190089245)
-- Moises de Araújo Altounian (200069306)
-- Pedro Cesar Ribeiro Passos (180139312)
-- Tiago Cabral de Faria (160146712)
+https://crates.io/crates/jsonrpc-http-server
 
-## Sobre Blockchain e Criptomoedas
+https://www.youtube.com/watch?v=FaPrnPMY_po
 
-O Blockchain consiste num registro público de todas as transações de um determinado tipo, organizado em blocos conectados de forma encadeada, garantindo transparência, imutabilidade e segurança.
+https://substrate.stackexchange.com/questions/2435/invalid-params-for-rpc
 
-Já as Criptomoedas consistem numa forma de dinheiro digital descentralizado que utiliza criptografia para garantir transações seguras e para controlar a criação de novas unidades. Utiliza-se da Blockchain para garantir a descentralização.
+### Example of client invocation using cURL:
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/seraphritt/projeto_LP/issues)
+curl -X POST -H "Content-Type: application/json" -d '{"id": 13, "jsonrpc": "2.0", "method": "ping" }' 127.0.0.1:8333
+
+curl -X POST -H "Content-Type: application/json" -d '{"id": 13, "jsonrpc": "2.0", "method": "add", "params":[1,2] }' 127.0.0.1:8333
