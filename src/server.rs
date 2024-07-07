@@ -79,12 +79,11 @@ fn main() {
         }
         .to_delegate(),
     );
-
     // Start the server
     let server = ServerBuilder::new(io)
         .threads(3)
         .start_http(&"127.0.0.1:8333".parse().unwrap())
         .unwrap();
-
+    println!("jsonrpc is up!");
     server.wait();
 }
