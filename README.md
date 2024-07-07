@@ -17,7 +17,8 @@ curl -X POST -H "Content-Type: application/json" -d '{"id": 13, "jsonrpc": "2.0"
 
 ### Initializing docker and installing Tauri
 
-sh <(curl https://create.tauri.app/sh) --beta (tauri v2)
+(tauri v2)
+sh <(curl https://create.tauri.app/sh) --beta
 
 Make the steps as follows:
 1. <project_name>
