@@ -46,4 +46,4 @@ Um projeto de implementação de uma criptomoeda é um bom exemplo de como as pr
 
 ## Conclusão
 
-A escolha de Rust para implementação de uma criptomoeda não apenas atende, mas também supera as expectativas em termos de segurança, performance e concorrência. Seu sistema de tipos avançado e abordagem inovadora para gestão de memória proporcionam um ambiente robusto para desenvolver aplicações críticas como criptomoedas, garantindo tanto a segurança quanto a eficiência necessárias para o sucesso do projeto.
+A escolha de Rust para implementação de uma criptomoeda atendeu as expectativas em termos de segurança e performance. Seu sistema de tipos avançado e criterioso proporcionou um bom ambiente para desenvolver a aplicação.

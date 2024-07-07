@@ -50,4 +50,4 @@
 
 O Blockchain consiste num registro público de todas as transações de um determinado tipo, organizado em blocos conectados de forma encadeada, garantindo transparência, imutabilidade e segurança.
 
-Já as Criptomoedas consistem numa forma de dinheiro digital descentralizado que utiliza criptografia para garantir transações seguras e para controlar a criação de novas unidades. Utiliza-se da Blockchain para garantir a descentralização.
+As Criptomoedas consistem numa forma de dinheiro digital descentralizado em que pode ser aplicada a Blockchain para registrar as transações com segurança e confiabilidade.
