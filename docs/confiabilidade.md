@@ -2,12 +2,13 @@
 
 ## Verificação de Tipos
 
-Rust realiza verificação de tipos em tempo de compilação de forma rigorosa, o que ajuda a capturar muitos erros comuns antes mesmo de executar o programa.
+Rust realiza verificação de tipos em tempo de compilação de forma ainda mais rigorosa do que o C++, verificando também propriedades como a mutabilidade de uma variável e a reutilização dela em outras partes do código.
 
 Em Rust:
 ```rust
 fn main() {
     let x: i32 = "hello"; // Erro de tipo: esperava i32, encontrou &str
+    x = 64; // Erro do tipo: não pode haver atribuição dupla em uma variável imutável (por padrão, todas as variáveis são imutáveis.
     println!("Hello, world!");
 }
 ```
@@ -23,8 +24,6 @@ int main() {
     return 0;
 }
 ```
-
-Rust possui um sistema de tipos muito forte e seguro, verificando a maioria dos erros de tipos em tempo de compilação. Isso ajuda a evitar muitos bugs comuns antes mesmo de executar o programa. As verificações de tipos são realizadas de forma rigorosa, o que contribui para código mais robusto e menos propenso a erros de execução relacionados a tipos.
 
 ## Tratamento de Exceções
 
@@ -56,11 +55,9 @@ int main() {
 }
 ```
 
-Rust não possui um sistema tradicional de exceções como C++, optando por utilizar o tipo Result para lidar com erros de forma explícita. Isso promove um código mais previsível e menos suscetível a falhas inesperadas devido a exceções não tratadas.
-
 ## Aliasing
 
-Rust é forte em prevenir problemas de aliasing, especialmente com o sistema de propriedade (ownership) que garante que apenas uma referência pode modificar dados compartilhados por vez.
+Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo drasticamente a possibilidade de erros relacionados a aliasing.
 
 Em Rust:
 ```rust
@@ -86,8 +83,6 @@ int main() {
     return 0;
 }
 ```
-
-Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo drasticamente a possibilidade de erros relacionados a aliasing.
 
 ## Legibilidade e Capacidade de Escrita
 
@@ -118,7 +113,5 @@ int main() {
 }
 ```
 
-Rust é projetado com uma sintaxe moderna e regras de estilo que promovem a legibilidade do código. A linguagem enfatiza o uso de padrões de programação seguros e claros, tornando mais fácil para os desenvolvedores escreverem e entenderem código complexo.
-
 ## Comentário geral
-Rust é geralmente considerada mais segura e menos propensa a erros comuns de programação em comparação com C++. A forte verificação de tipos em tempo de compilação, juntamente com a prevenção de problemas de aliasing, fazem de Rust uma escolha preferida para projetos que exigem alta confiabilidade e segurança. Além disso, o tratamento explícito de erros e a ênfase na legibilidade contribuem para um desenvolvimento mais robusto e sustentável.
+Rust é geralmente considerada mais segura e menos propensa a erros comuns de programação em comparação com C++. A forte verificação de tipos em tempo de compilação, juntamente com a prevenção de problemas de aliasing, fazem de Rust uma escolha preferida para projetos que exigem alta confiabilidade e segurança.
