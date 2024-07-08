@@ -1,7 +1,15 @@
 [package]
-name = "blockchain"
+name = "blockchaincrypto"
 version = "0.1.0"
 edition = "2021"
+
+[[bin]]
+name = "wallet"
+path = "src/wallet.rs"
+
+[[bin]]
+name = "database"
+path = "src/database.rs"
 
 [[bin]]
 name = "blockchain"
@@ -18,10 +26,6 @@ path = "src/server.rs"
 [[bin]]
 name = "client"
 path = "src/client.rs"
-
-[[bin]]
-name = "database"
-path = "src/database.rs"
 
 
 [dependencies]

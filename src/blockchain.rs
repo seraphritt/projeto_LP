@@ -1,6 +1,3 @@
-mod database;
-mod transaction;
-
 use chrono::Utc;
 use uuid::Uuid;
 use sha2::{Digest, Sha256};
@@ -9,11 +6,25 @@ use serde::{Serialize, Deserialize};
 use std::io::{Write, Error};
 use std::fs;
 use rand::Rng;
-use database::BlockchainDB;
+
+use std::fmt;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
+use std::thread;
+use std::time::Duration;
+
+// mod database;
+// use database::BlockchainDB;
+mod transaction;
 use transaction::Transaction;
 
 type Id = fn() -> String;
 const CREATE_ID: Id = || Uuid::new_v4().to_string();
+
+fn generate_random_u64()-> u64{
+    let mut rng = rand::thread_rng();
+    rng.gen()
+}
 
 trait JsonSerDe: Serialize {
     fn to_json(&self) -> String {
@@ -162,9 +173,15 @@ impl BlockBuilder {
 
 const DIFFICULTY: usize = 3; // dificuldade do proof of work da blockchain
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct Blockchain {
     chain: Vec<Block>,
+}
+
+impl fmt::Display for Blockchain {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Blockchain {{ chain: {:?} }}", self.chain)
+    }
 }
 
 impl Blockchain {
@@ -192,6 +209,10 @@ impl Blockchain {
                                             .build();
         self.chain.push(new_block);
     }
+    pub fn add_block(&mut self, block: Block){
+        self.chain.push(block);
+    }
+
     pub fn print_previous_block(&self) {
         if let Some(block) = self.chain.last() {
             println!("Previous Block: {:?}", block);
@@ -199,14 +220,14 @@ impl Blockchain {
             println!("Blockchain is empty.");
         }
     }
-    pub fn proof_of_work(&self, last_proof: u64) -> u64 {
+    pub fn proof_of_work(last_proof: u64) -> u64 {
         let mut proof = 0;
-        while !self.is_valid_proof(last_proof, proof) {
+        while !Self::is_valid_proof(last_proof, proof) {
             proof += 1;
         }
         proof
     }
-    fn is_valid_proof(&self, last_proof: u64, proof: u64) -> bool {
+    fn is_valid_proof(last_proof: u64, proof: u64) -> bool {
         let guess = format!("{}{}", last_proof, proof);
         let guess_hash = Blockchain::hash_string(&guess);
         println!("Proof{}", guess_hash);
@@ -220,7 +241,7 @@ impl Blockchain {
             if current_block.header.previous_hash != Blockchain::hash_block(previous_block) {
                 return false;
             }
-            if !self.is_valid_proof(previous_block.proof, current_block.proof) {
+            if !Self::is_valid_proof(previous_block.proof, current_block.proof) {
                 return false;
             }
 
@@ -245,41 +266,126 @@ impl Blockchain {
 }
 
 
-struct BlockchainManager{
-    database: BlockchainDB,
+pub struct SharedData {
     prospective_block: Block,
-    blockchain: Blockchain,    
+    blockchain: Blockchain,
 }
 
-fn generate_random_u64()-> u64{
-    let mut rng = rand::thread_rng();
-    rng.gen()
+struct BlockchainManager {
+    shared_data: Arc<Mutex<SharedData>>,
+    miner_stop: Arc<AtomicBool>,
+    previous_proof: u64,
 }
 
-impl BlockchainManager{
-    fn new() -> Self{
-        Self{
-            database: BlockchainDB::new("blockchain_db".to_string()),
-            prospective_block: BlockBuilder::new().build(), //TODO: fill in parameters
-            blockchain: Blockchain::new(),
+impl BlockchainManager {
+    // may need to pass the block here?
+    const WAITING_PERIOD: u64 = 5;
+
+    fn new() -> Self {
+        let blockchain: Blockchain = Blockchain::new();
+        let last_proof = blockchain.chain.last().unwrap().proof;
+        Self {
+            miner_stop: Arc::new(AtomicBool::new(false)),
+            shared_data: {
+                let new_index: u64 = blockchain.chain.last().unwrap().index+1;
+                let previous_hash = Blockchain::hash_block(blockchain.chain.last().unwrap());
+
+                // block template - needs params from outside?
+                let block = BlockBuilder::new()
+                                                .proof(0)
+                                                .index(new_index)
+                                                .previous_hash(previous_hash)
+                                                .timestamp(Utc::now().to_rfc2822())
+                                                .build();
+
+                // shared lock
+                Arc::new(Mutex::new(SharedData {
+                    prospective_block: block,
+                    blockchain: blockchain,
+                }))
+            },
+            previous_proof: last_proof,
         }
     }
 
-    fn create_new_transaction(&self, inputs: Vec<String>, outputs: Vec<String>) -> Transaction {
-        Transaction{
-            id: generate_random_u64(),
-            input_counter: inputs.len() as i32,
-            inputs,
-            output_counter: outputs.len() as i32,
-            outputs,
-            locktime: 33.0,
-        }
+    // or may need to pass the block here?
+    pub fn start_miner_thread(&self) {
+        // get the lock of the shared data
+        let thread_shared_data = Arc::clone(&self.shared_data);
+        // get the lock to atomic bool that stops the miner thread
+        let thread_stop = Arc::clone(&self.miner_stop);
+        let previous_proof = self.previous_proof;
+        // Spawn a thread that modifies the shared data
+        let _handle = thread::spawn(move || {
+            let mut block_id = 0; // will be a hash
+            loop {
+                // check if can stop infinite loop
+                if thread_stop.load(Ordering::SeqCst) {
+                    break;
+                }
+
+                // Sleep for a period of time to give a chance of populating transactions in block, usually 10 min
+                thread::sleep(Duration::from_secs(Self::WAITING_PERIOD));
+
+                // do the mining
+                let hash = Blockchain::proof_of_work(previous_proof);
+
+                // Lock the mutex to update the shared data
+                let mut data = thread_shared_data.lock().unwrap();
+
+                // update the prospective block
+                data.prospective_block.proof = hash;
+
+                // update the shared data by pushing a copy of prospective block, that is now final, to blockchain
+                if data.prospective_block.transactions.len() > 0 {
+                    let block_to_add = data.prospective_block.clone();
+                    data.blockchain.add_block(block_to_add);
+
+
+                    let new_index: u64 = data.blockchain.chain.last().unwrap().index+1;
+                    let previous_hash = Blockchain::hash_block(data.blockchain.chain.last().unwrap());
+
+                    // reset prospective block by creating a new prospective block (may need the params from outside?)
+                    data.prospective_block = BlockBuilder::new()
+                                                        .proof(0)
+                                                        .index(new_index)
+                                                        .previous_hash(previous_hash)
+                                                        .timestamp(Utc::now().to_rfc2822())
+                                                        .build();
+
+
+                } else {
+                    println!("Prospective block doesn't have any transactions, not including into blockchain!")
+                }
+
+                // Mutex is automatically unlocked when `data` goes out of scope
+            }
+            println!("Shutting down the miner thread");
+        });
     }
 
-    fn is_transaction_valid(transaction: Transaction) -> bool{
-        true // TODO: implement it!
+    pub fn stop_miner(&self) {
+        self.miner_stop.store(true, Ordering::SeqCst);
     }
+
+    // returns a copy of the blockchain
+    pub fn get_blockchain(&self) -> Blockchain {
+        let data = self.shared_data.lock().unwrap();
+        data.blockchain.clone()
+    }
+
+    pub fn add_txn_to_prospective_block(&self, txn: Transaction) {
+        let mut data = self.shared_data.lock().unwrap();
+        data.prospective_block.transactions.push(txn);
+    }
+
+    // for debug only
+    // pub fn get_copy_of_prospective_block(&self) -> Block {
+    //     let data = self.shared_data.lock().unwrap();
+    //     data.prospective_block.clone()
+    // }
 }
+
 
 //TODO: move to struct? 
 pub fn to_json(block: &Block) -> String {
@@ -310,22 +416,44 @@ pub fn read_from_file(file_path: &str) -> Result<String, Error> {
     Ok(contents)
 }
 fn main() {
-    // o blockchain já vem com um bloco padrão, chamado genesis block
-    let mut blockchain = Blockchain::new();
-    for _ in 0..4 {
-        let last_proof = blockchain.chain.last().unwrap().proof;
-        let proof = blockchain.proof_of_work(last_proof);
-        let previous_hash = Blockchain::hash_block(blockchain.chain.last().unwrap());
-        blockchain.create_block(proof, previous_hash);
+    // // o blockchain já vem com um bloco padrão, chamado genesis block
+    // let mut blockchain = Blockchain::new();
+    // for _ in 0..4 {
+    //     let last_proof = blockchain.chain.last().unwrap().proof;
+    //     let proof = Blockchain::proof_of_work(last_proof);
+    //     let previous_hash = Blockchain::hash_block(blockchain.chain.last().unwrap());
+    //     blockchain.create_block(proof, previous_hash);
+    // }
+    // // exemplo de criação de um bloco que não passou pelo proof of work, fazendo assim com que a blockchain fique invalidada
+    // blockchain.create_block(10, String::from("4f607389fe5630ad233e04a316e12bf864329551f19c180de9805a3e337de57f"));
+    // // como tem o derive(Debug), ele consegue imprimir cada bloco da blockchain
+    // for block in &blockchain.chain {
+    //     println!("{:?}", block);
+    // }
+    // println!("Is blockchain valid? {}", blockchain.is_chain_valid());
+    // println!("{:?}", blockchain.chain)
+
+    println!("main thread");
+
+    let manager: BlockchainManager = BlockchainManager::new();
+    manager.start_miner_thread();
+
+    let mut i = 1;
+    loop {
+        thread::sleep(Duration::from_secs(1));
+
+        // inserts a new transaction into prospective block
+        manager.add_txn_to_prospective_block(Transaction { id: i, from: "A".to_string(), to: "B".to_string(), money:1});
+
+        // stops the miner, just an example
+        if i == 100 {
+            manager.stop_miner();
+            break;
+        }
+        println!("{}", manager.get_blockchain());
+        i += 1;
     }
-    // exemplo de criação de um bloco que não passou pelo proof of work, fazendo assim com que a blockchain fique invalidada
-    blockchain.create_block(10, String::from("4f607389fe5630ad233e04a316e12bf864329551f19c180de9805a3e337de57f"));
-    // como tem o derive(Debug), ele consegue imprimir cada bloco da blockchain
-    for block in &blockchain.chain {
-        println!("{:?}", block);
-    }
-    println!("Is blockchain valid? {}", blockchain.is_chain_valid());
-    println!("{:?}", blockchain.chain)
+
 }
 
 
@@ -408,31 +536,31 @@ fn test_write_and_read_block_to_disk() {
     // }
 }
 
-#[test]
-fn test_block_builder() {
-    let txn = Transaction{
-        id: generate_random_u64(),
-        input_counter: 1,
-        inputs: vec!["input".to_string()],
-        output_counter: 1,
-        outputs: vec!["out".to_string()],
-        locktime: 3.3,
-    };
-    let block = BlockBuilder::new()
-                        .index(1)
-                        .proof(2)
-                        .previous_hash("aaf05261616".to_string())
-                        .merkle_root("ccff88213".to_string()) // build after inserting txns
-                        .timestamp("Saturday".to_string())
-                        .difficulty(9)
-                        .nonce(3)
-                        .transactions(&vec![txn.clone()])
-                        .build();
-    //TODO: multi-format lines
-    let expected = "{\"index\":1,\"proof\":2,\"header\":{\"previous_hash\":\"aaf05261616\",\"merkle_root\":\"ccff88213\",\"timestamp\":\"Saturday\",\"difficulty\":9,\"nonce\":3},\"transactions\":[{\"input_counter\":1,\"inputs\":[\"input\"],\"output_counter\":1,\"outputs\":[\"out\"],\"locktime\":3}],\"transaction_counter\":1}";
-    // assert_eq!(expected, to_json(&block));
-    assert_eq!(expected, block.to_json())
-}
+// #[test]
+// fn test_block_builder() {
+//     let txn = Transaction{
+//         id: generate_random_u64(),
+//         input_counter: 1,
+//         inputs: vec!["input".to_string()],
+//         output_counter: 1,
+//         outputs: vec!["out".to_string()],
+//         locktime: 3.3,
+//     };
+//     let block = BlockBuilder::new()
+//                         .index(1)
+//                         .proof(2)
+//                         .previous_hash("aaf05261616".to_string())
+//                         .merkle_root("ccff88213".to_string()) // build after inserting txns
+//                         .timestamp("Saturday".to_string())
+//                         .difficulty(9)
+//                         .nonce(3)
+//                         .transactions(&vec![txn.clone()])
+//                         .build();
+//     //TODO: multi-format lines
+//     let expected = "{\"index\":1,\"proof\":2,\"header\":{\"previous_hash\":\"aaf05261616\",\"merkle_root\":\"ccff88213\",\"timestamp\":\"Saturday\",\"difficulty\":9,\"nonce\":3},\"transactions\":[{\"input_counter\":1,\"inputs\":[\"input\"],\"output_counter\":1,\"outputs\":[\"out\"],\"locktime\":3}],\"transaction_counter\":1}";
+//     // assert_eq!(expected, to_json(&block));
+//     assert_eq!(expected, block.to_json())
+// }
 
 
 

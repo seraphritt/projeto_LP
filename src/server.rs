@@ -6,7 +6,9 @@ use jsonrpc_http_server::ServerBuilder;
 mod database;
 // Access the structs from database.rs
 use database::BlockchainDB;
-use database::Transaction;
+// use database::Transaction;
+mod wallet;
+// use wallet::wallet::Transaction;
 use uuid::Uuid;
 
 // https://github.com/paritytech/jsonrpc
@@ -20,8 +22,8 @@ pub trait Rpc {
     #[rpc(name = "ping")]
     fn ping(&self) -> Result<Value>;
 
-    #[rpc(name = "add_transaction")]
-    fn add_transaction(&self, data: String) -> Result<Value>;
+    // #[rpc(name = "add_transaction")]
+    // fn add_transaction(&self, data: String) -> Result<Value>;
 
     #[rpc(name = "list_transactions")]
     fn list_transactions(&self) -> Result<Value>;
@@ -42,14 +44,14 @@ impl Rpc for RpcImpl {
         Ok(Value::String("pong".into()))
     }
 
-    fn add_transaction(&self, data: String) -> Result<Value> {
-        let txn_id = Uuid::new_v4().to_string();
-        self.db.save_transaction(&Transaction {
-            id: txn_id.clone(),
-            data: data,
-        });
-        Ok(Value::String(txn_id.into()))
-    }
+    // fn add_transaction(&self, data: String) -> Result<Value> {
+    //     let txn_id = Uuid::new_v4().to_string();
+    //     self.db.save_transaction(&Transaction {
+    //         id: txn_id.clone(),
+    //         data: data,
+    //     });
+    //     Ok(Value::String(txn_id.into()))
+    // }
 
     fn list_transactions(&self) -> Result<Value> {
         Ok(Value::Array(
