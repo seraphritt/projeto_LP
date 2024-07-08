@@ -17,18 +17,16 @@ curl -X POST -H "Content-Type: application/json" -d '{"id": 13, "jsonrpc": "2.0"
 
 ### Initializing docker and installing Tauri
 
-sh <(curl https://create.tauri.app/sh) --beta (tauri v2)
+# Using Debian Linux:
+### Build the DockerFile (it may take some time)
 
-Make the steps as follows:
-1. <project_name>
-2. select Rust (cargo)
-3. Vanilla
-4. no
+`xhost +local:docker`
 
-Then run the following commands:
+`docker build -t <image_tag> .` 
 
-``cd <project_name>``
+`docker run -it --network host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix <image_tag> bash`
 
-``cargo tauri dev``
+### Run the application 
 
-Anotação: docker run -it --network host <container_id> bash (faz o docker conseguir receber conexões da máquina local)
+`cargo tauri dev`
+
