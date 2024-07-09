@@ -2,7 +2,7 @@ FROM rust:1.79
 
 WORKDIR /usr/src/myapp
 
-COPY projeto .
+COPY . .
 
 RUN apt-get update -y
 RUN cargo install tauri-cli@^2.0.0-beta
