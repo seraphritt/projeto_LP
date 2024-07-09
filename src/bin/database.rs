@@ -1,25 +1,15 @@
 use blockchaincrypto::database::KeyValueStore;
-use blockchaincrypto::database::WalletDB;
-use blockchaincrypto::wallet::Wallet;
+// use blockchaincrypto::transaction::Transaction;
 
 fn main() {
     let kv_store = KeyValueStore {
         db: KeyValueStore::open("./data/my_db".to_string()),
     };
 
-    let wallet_db = WalletDB { kv_store: kv_store };
-    let wallet1 = Wallet {
-        ladscoin_address: "abc".to_string(),
-        balance: 10,
-    };
-    wallet_db.register_wallet(&wallet1);
-
-    println!("{:?}", wallet_db.kv_store.prefix_scan(&"txn:".to_string()));
-
-    // kv_store.put(&"block:Teste1".to_string(), &"99".to_string());
-    // kv_store.put(&"block:Teste2".to_string(), &"100".to_string());
-    // kv_store.put(&"block:Teste3".to_string(), &"101".to_string());
-    // kv_store.put(&"block:Teste4".to_string(), &"102".to_string());
+    kv_store.put(&"block:Teste1".to_string(), &"99".to_string());
+    kv_store.put(&"block:Teste2".to_string(), &"100".to_string());
+    kv_store.put(&"block:Teste3".to_string(), &"101".to_string());
+    kv_store.put(&"block:Teste4".to_string(), &"102".to_string());
 
     // println!("{}", kv_store.size());
 
@@ -41,10 +31,10 @@ fn main() {
     // };
     // println!("{}", value);
 
-    // println!(
-    //     "{:?}",
-    //     kv_store.range_scan(&"txn:".to_string(), &"block:Teste4".to_string())
-    // );
+    println!(
+        "{:?}",
+        kv_store.range_scan(&"txn:".to_string(), &"block:Teste4".to_string())
+    );
 
     // println!("{:?}", kv_store.prefix_scan(&"block:".to_string()));
 

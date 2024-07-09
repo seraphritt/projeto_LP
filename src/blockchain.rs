@@ -1,12 +1,9 @@
-use actix_web::web::block;
 use chrono::Utc;
 use log::warn;
 use log::{debug, info};
-use rand::Rng;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::fmt;
-use std::fs;
 use std::io::{Error, Write};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
@@ -14,10 +11,10 @@ use std::thread;
 use std::time::Duration;
 use std::{
     fs::File,
-    hash::{Hash, Hasher},
     io::{BufReader, Read},
 };
 use uuid::Uuid;
+use rand::Rng;
 
 use crate::database::BlockchainDB;
 use crate::transaction::Transaction;
@@ -25,7 +22,7 @@ use crate::transaction::Transaction;
 type Id = fn() -> String;
 const CREATE_ID: Id = || Uuid::new_v4().to_string();
 
-fn generate_random_u64() -> u64 {
+fn generate_random_u64()-> u64{
     let mut rng = rand::thread_rng();
     rng.gen()
 }
@@ -34,20 +31,13 @@ trait JsonSerDe: Serialize {
     fn to_json(&self) -> String {
         serde_json::to_string(self).unwrap()
     }
-
-    // error
-    // fn from_json(json_str: &str) -> Self {
-    //     serde_json::from_str(&json_str).unwrap()
-    // }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BlockHeader {
     pub previous_hash: String,
-    pub merkle_root: String,
-    pub timestamp: String,
+    pub timestamp: i64,
     pub difficulty: u32,
-    pub nonce: u32,
 }
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Block {
@@ -60,14 +50,14 @@ pub struct Block {
 
 impl JsonSerDe for Block {}
 
+const DIFFICULTY: usize = 3; // dificuldade do proof of work da blockchain
+
 impl Block {
-    pub fn new(proof: u64, index: u64, previous_hash: String, timestamp: String) -> Self {
+    pub fn new(proof: u64, index: u64, previous_hash: String, timestamp: i64) -> Self {
         let block_header: BlockHeader = BlockHeader {
             previous_hash,
             timestamp,
-            merkle_root: String::from(""),
             difficulty: 0,
-            nonce: 0,
         };
 
         Block {
@@ -85,23 +75,11 @@ impl Block {
     }
 }
 
-// TODO: add all fields, including block header!!!
-impl Hash for Block {
-    fn hash<H: Hasher>(&self, state: &mut H) {
-        self.index.hash(state);
-        // self.timestamp.hash(state);
-        self.proof.hash(state);
-        // self.previous_hash.hash(state);
-    }
-}
-
 struct BlockBuilder {
     // Block Header
     previous_hash: String,
-    merkle_root: String,
-    timestamp: String, //TODO: convert to u64
+    timestamp: i64, //TODO: convert to u64
     difficulty: u32,
-    nonce: u32,
     // Block Body
     index: u64,
     proof: u64,
@@ -115,10 +93,8 @@ impl BlockBuilder {
             index: 0,
             proof: 0,
             previous_hash: "".to_string(),
-            merkle_root: "".to_string(),
-            timestamp: "".to_string(), //TODO: convert to u64
+            timestamp: 0, //TODO: convert to u64
             difficulty: 0,
-            nonce: 0,
             transactions: vec![],
             transaction_counter: 0,
         }
@@ -131,11 +107,7 @@ impl BlockBuilder {
         self.previous_hash = ph.clone();
         self
     }
-    pub fn merkle_root(mut self, mr: String) -> Self {
-        self.merkle_root = mr;
-        self
-    }
-    pub fn timestamp(mut self, ts: String) -> Self {
+    pub fn timestamp(mut self, ts: i64) -> Self {
         self.timestamp = ts;
         self
     }
@@ -144,10 +116,6 @@ impl BlockBuilder {
         self
     }
 
-    pub fn nonce(mut self, n: u32) -> Self {
-        self.nonce = n;
-        self
-    }
     pub fn proof(mut self, p: u64) -> Self {
         self.proof = p;
         self
@@ -164,18 +132,14 @@ impl BlockBuilder {
             proof: self.proof,
             header: BlockHeader {
                 previous_hash: self.previous_hash.clone(),
-                merkle_root: self.merkle_root.clone(),
                 timestamp: self.timestamp.clone(), //TODO: convert to u64
                 difficulty: self.difficulty,
-                nonce: self.nonce,
             },
             transactions: self.transactions.clone(),
             transaction_counter: self.transaction_counter,
         }
     }
 }
-
-const DIFFICULTY: usize = 3; // dificuldade do proof of work da blockchain
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Blockchain {
@@ -190,28 +154,15 @@ impl fmt::Display for Blockchain {
 
 impl Blockchain {
     pub fn new() -> Self {
-        // let genesis_block = Block::new(1, 0, String::from("0"), Utc::now().to_rfc2822());
         let genesis_block = BlockBuilder::new()
             .proof(1)
             .index(0)
             .previous_hash(String::from("0"))
-            .timestamp(Utc::now().to_rfc2822())
+            .timestamp(Utc::now().timestamp())
             .build();
         Blockchain {
             chain: vec![genesis_block],
         }
-    }
-    pub fn create_block(&mut self, proof: u64, previous_hash: String) {
-        let index = self.chain.len() as u64;
-        // let new_block = Block::new(proof, index, previous_hash, Utc::now().to_rfc2822());
-        // TODO: add other fields
-        let new_block = BlockBuilder::new()
-            .proof(proof)
-            .index(index)
-            .previous_hash(previous_hash)
-            .timestamp(Utc::now().to_rfc2822())
-            .build();
-        self.chain.push(new_block);
     }
     pub fn add_block(&mut self, block: Block) {
         self.chain.push(block);
@@ -312,7 +263,8 @@ impl BlockchainManager {
                     .proof(0)
                     .index(new_index)
                     .previous_hash(previous_hash)
-                    .timestamp(Utc::now().to_rfc2822())
+                    .difficulty(DIFFICULTY as u32)
+                    .timestamp(Utc::now().timestamp())
                     .build();
 
                 // shared lock
@@ -358,6 +310,8 @@ impl BlockchainManager {
                 info!("Updating prospective block");
                 // update the prospective block
                 data.prospective_block.proof = hash;
+                let txn_size:u32 = data.prospective_block.transactions.len() as u32;
+                data.prospective_block.transaction_counter = txn_size;
 
                 // update the shared data by pushing a copy of prospective block, that is now final, to blockchain
                 if data.prospective_block.transactions.len() > 0 {
@@ -390,15 +344,16 @@ impl BlockchainManager {
                         .proof(0)
                         .index(new_index)
                         .previous_hash(previous_hash)
-                        .timestamp(Utc::now().to_rfc2822())
+                        .difficulty(DIFFICULTY as u32)
+                        .timestamp(Utc::now().timestamp())
                         .build();
                 } else {
                     warn!("Prospective block doesn't have any transactions");
-                    println!("Prospective block doesn't have any transactions, not including into blockchain!");
+                    // println!("Prospective block doesn't have any transactions, not including into blockchain!");
                 }
             }
             info!("Shutting down the miner thread");
-            println!("Shutting down the miner thread");
+            // println!("Shutting down the miner thread");
         });
     }
 
@@ -439,11 +394,39 @@ impl BlockchainManager {
         database.list_blocks()
     }
 
-    // for debug only
-    // pub fn get_copy_of_prospective_block(&self) -> Block {
-    //     let data = self.shared_data.lock().unwrap();
-    //     data.prospective_block.clone()
-    // }
+    pub fn get_balance(&self, wallet_id: String)->i64{
+        let txns = {
+            let database = self.blockchain_db.lock().unwrap();
+            database.list_transactions()
+        };
+
+        let balance = txns.into_iter()
+                               .map(|x|  x.consume_transaction(&wallet_id))
+                                .sum::<i64>();
+
+        if balance < 0 {
+            debug!("Balance from {} is negative: {}", wallet_id, balance);
+        }
+        balance
+    }
+
+    pub fn create_transaction(&self, from: String, to: String, money: i64)-> String {
+       
+        // 1. filtra txns por campo origem 
+        let balance = self.get_balance(from.clone());
+
+        // 2. validar txn, se valida chamar:
+        if balance >= money {
+            let new_id = generate_random_u64();
+            self.add_txn_to_prospective_block(Transaction{
+                id: new_id, from, to, money,
+            });
+            return "OK".to_string();
+        } 
+        
+        "Error: Not enough balance".to_string()
+    }
+
 }
 
 //TODO: move to struct?
@@ -481,7 +464,7 @@ fn test_new_block() {
     let index = 1;
     let proof = 42;
     let previous_hash = String::from("aff80323039339");
-    let timestamp = String::from("2024-07-03");
+    let timestamp = 1234;
     let new_block = Block::new(proof, index, previous_hash, timestamp);
     // header
     assert_eq!(
@@ -489,8 +472,8 @@ fn test_new_block() {
         String::from("aff80323039339")
     );
     assert_eq!(new_block.header.difficulty, 0);
-    assert_eq!(new_block.header.merkle_root, String::from(""));
-    assert_eq!(new_block.header.nonce, 0);
+    // assert_eq!(new_block.header.merkle_root, String::from(""));
+    // assert_eq!(new_block.header.nonce, 0);
     // block
     assert_eq!(new_block.index, 1);
     assert_eq!(new_block.proof, 42);
@@ -502,7 +485,7 @@ fn test_block_serialization_as_json() {
     let index = 1;
     let proof = 42;
     let previous_hash = String::from("aff80323039339");
-    let timestamp = String::from("2024-07-03");
+    let timestamp = 1234;
     let block = Block::new(proof, index, previous_hash, timestamp);
 
     let serialized = to_json(&block);
@@ -517,8 +500,8 @@ fn test_block_deserialization_as_json() {
     // header
     assert_eq!(block.header.previous_hash, String::from("aff80323039339"));
     assert_eq!(block.header.difficulty, 0);
-    assert_eq!(block.header.merkle_root, String::from(""));
-    assert_eq!(block.header.nonce, 0);
+    // assert_eq!(block.header.merkle_root, String::from(""));
+    // assert_eq!(block.header.nonce, 0);
     // block
     assert_eq!(block.index, 1);
     assert_eq!(block.proof, 42);
@@ -530,7 +513,7 @@ fn test_write_and_read_block_to_disk() {
     let index = 1;
     let proof = 42;
     let previous_hash = String::from("aff80323039339");
-    let timestamp = String::from("2024-07-03");
+    let timestamp = 1234;
     let block = Block::new(proof, index, previous_hash, timestamp);
 
     let json_str = to_json(&block);
@@ -546,8 +529,8 @@ fn test_write_and_read_block_to_disk() {
         String::from("aff80323039339")
     );
     assert_eq!(serialized_block.header.difficulty, 0);
-    assert_eq!(serialized_block.header.merkle_root, String::from(""));
-    assert_eq!(serialized_block.header.nonce, 0);
+    // assert_eq!(serialized_block.header.merkle_root, String::from(""));
+    // assert_eq!(serialized_block.header.nonce, 0);
     // block
     assert_eq!(serialized_block.index, 1);
     assert_eq!(serialized_block.proof, 42);
