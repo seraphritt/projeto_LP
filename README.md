@@ -30,3 +30,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"id": 13, "jsonrpc": "2.0"
 
 `cargo tauri dev`
 
+### Run any rust file (.rs)
+
+`cargo run --bin <file_name>`
+
