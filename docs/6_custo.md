@@ -1,4 +1,4 @@
-# Custos
+# Custos e Qualidade da Definição
 ## Custo de Treinamento
 ### Simplicidade e Ortogonalidade da Linguagem
 
@@ -25,4 +25,4 @@ Entretanto, como dito anteriormente, essa forte verificação causa lentidão em
 ## Qualidade da Definição
 ### Gramática
 
-A linguagem de programação em questão possui uma ampla documentação que pode ser acessada pelo link (https://www.rust-lang.org/learn), onde estão presentes as informações sobre a gramática da linguagem e sua sintaxe. Ademais, atualmente possui uma comunidade bastante ativa e que colabora para o crescimento e a ampliação do uso da linguagem. 
+A linguagem de programação em questão possui uma ampla documentação que pode ser acessada pelo link [www.rust-lang.org/learn](https://www.rust-lang.org/learn), onde estão presentes as informações sobre a gramática da linguagem e sua sintaxe. Ademais, atualmente possui uma comunidade bastante ativa e que colabora para o crescimento e a ampliação do uso da linguagem. 
