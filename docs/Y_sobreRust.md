@@ -44,9 +44,3 @@ Em resumo, a pilha e o heap têm características e propósitos distintos. Poré
 * Memória com melhor desempenho.
 * Abstrações de custo zero, garantindo maior produtividade sem prejudicar a perfomance.
 * Análise e compilação do código feita em tempo de compilação.
-
-
-
-<p align="center">
-  <img style="border-radius: 5%;" src="../docs/images/rust_imagem.png" alt="Ícone da linguagem de programação Rust">
-</p>
