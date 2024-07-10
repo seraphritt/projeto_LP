@@ -18,7 +18,7 @@ Rust possui um rico sistema de tipos primitivos, que são verificados em tempo d
 * Inteiro : Em Rust, os inteiros (int) podem, em sua declaração, indicar o valor associado com base em seu tamanho. Além disso, pode ser declarado como signed (positivos e negativos) ou unsigned (apenas positivos).
 
 <p align="left">
-  <img src="../images/intrust.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="300">
+  <img src="../images/intrust.png" alt="Ícone de tipos primitivos Rust" style="margin-left: 50px" width="300">
 </p>
 
 * Flutuante: Números com casas decimais. Possui dois tipos primitivos que podem ser utilizados: f32 (32 bits) e f64 (64 bits)
@@ -67,7 +67,7 @@ Palavras que podem ser utilizadas apenas em seu contexto correto. Não podem ser
 
 
 <p align="left">
-  <img src="../images/strict.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="500">
+  <img src="../images/strict.png" alt="Ícone de palavras reservadas em Rust" style="margin-left: 50px" width="500">
 </p>
 
 
@@ -93,7 +93,7 @@ pub struct PublicStruct { // declaração alterada para pública
 Rust adota um modelo de tratamento de erros que, em comparação com outras linguagens, é distinto e rigoroso. Em vez de usar exceções, Rust utiliza enums e tipos de retorno específicos para garantir que todos os erros possíveis sejam tratados de forma explícita.
 
 Em Rust, não há null nem exceptions e separa os erros em duas categorias:
-* Recuperável: programa consegue tratar e continuar funcionando. Sempre que ocorre, ele pode ser retornado pela função de onde ocorreu. Funções com erros recuperáveis retornam uma enumeração Result <T,E>, em que T é o tipo do retorno em caso de sucesso, e E em caso de fracasso. 
+* Recuperável: programa consegue tratar e continuar funcionando, podendo ser retornado pela função de onde ocorreu. Funções com erros recuperáveis retornam uma enumeração Result que referencia dois casos: um deles é o tipo do retorno em caso de sucesso e o outro, em caso de fracasso. 
 * Irrecuperável: o programa não consegue tratar e deve encerrar sua execução imediatamente.
 
 A verificação de erros em Rust é fortemente incentivada por meio do uso do operador match, que permite ao desenvolvedor lidar de maneira abrangente com os resultados:
