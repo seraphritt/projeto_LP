@@ -1,4 +1,4 @@
-# Rust
+# Sobre Rust
 
 ## No que consiste a linguagem Rust?
 
