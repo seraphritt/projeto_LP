@@ -18,7 +18,7 @@ Rust possui um rico sistema de tipos primitivos, que são verificados em tempo d
 * Inteiro : Em Rust, os inteiros (int) podem, em sua declaração, indicar o valor associado com base em seu tamanho. Além disso, pode ser declarado como signed (positivos e negativos) ou unsigned (apenas positivos).
 
 <p align="left">
-  <img src="../docs/images/intrust.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="300">
+  <img src="../images/intrust.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="300">
 </p>
 
 * Flutuante: Números com casas decimais. Possui dois tipos primitivos que podem ser utilizados: f32 (32 bits) e f64 (64 bits)
@@ -67,7 +67,7 @@ Palavras que podem ser utilizadas apenas em seu contexto correto. Não podem ser
 
 
 <p align="left">
-  <img src="../docs/images/strict.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="500">
+  <img src="../images/strict.png" alt="Ícone da linguagem de programação Rust" style="margin-left: 50px" width="500">
 </p>
 
 
