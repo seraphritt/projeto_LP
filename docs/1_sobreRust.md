@@ -15,5 +15,5 @@ Desde sua versão inicial, Rust passou por várias iterações e melhorias signi
 Atualmente, Rust é usada em uma variedade de domínios, desde desenvolvimento de sistemas operacionais até web development e IoT. Seu ecossistema crescente inclui bibliotecas robustas, ferramentas de desenvolvimento como Cargo (gerenciador de pacotes) e suporte ativo da comunidade e da indústria.
 
 <p align="center">
-  <img src="images/rust_imagem.png" alt="Ícone da linguagem de programação Rust">
+  <img src="../images/rust_imagem.png" alt="Ícone da linguagem de programação Rust">
 </p>
