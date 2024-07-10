@@ -1,0 +1,28 @@
+.offers-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .offers-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .offers-table th, .offers-table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .offers-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .offers-table td {
+    background-color: #fff;
+  }
+  
+  .offers-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
