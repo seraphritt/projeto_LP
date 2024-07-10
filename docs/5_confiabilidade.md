@@ -27,7 +27,7 @@ int main() {
 
 ## Tratamento de Exceções
 
-Rust utiliza o conceito de Resultados (Result) para lidar com erros de forma explícita, evitando exceções tradicionais. Isso promove um código mais previsível e menos propenso a falhas inesperadas.
+Rust utiliza o conceito de Resultados (Result) para lidar com erros de forma explícita, evitando exceções tradicionais, o que promove um código mais previsível e menos propenso a falhas inesperadas.
 
 Em Rust:
 ```rust
@@ -57,7 +57,7 @@ int main() {
 
 ## Aliasing
 
-Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo drasticamente a possibilidade de erros relacionados a aliasing.
+Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo a possibilidade de erros relacionados a aliasing.
 
 Em Rust:
 ```rust
@@ -83,35 +83,3 @@ int main() {
     return 0;
 }
 ```
-
-## Legibilidade e Capacidade de Escrita
-
-Ambas as linguagens têm preocupações com legibilidade, mas Rust tem uma sintaxe mais moderna e regras de estilo que favorecem a segurança e a clareza do código.
-
-Em Rust:
-```rust
-fn main() {
-    let mut sum = 0;
-    for i in 1..=10 {
-        sum += i;
-    }
-    println!("Soma: {}", sum);
-}
-```
-Em C++:
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-    int sum = 0;
-    for (int i = 1; i <= 10; ++i) {
-        sum += i;
-    }
-    cout << "Soma: " << sum << endl;
-    return 0;
-}
-```
-
-## Comentário geral
-Rust é geralmente considerada mais segura e menos propensa a erros comuns de programação em comparação com C++. A forte verificação de tipos em tempo de compilação, juntamente com a prevenção de problemas de aliasing, fazem de Rust uma escolha preferida para projetos que exigem alta confiabilidade e segurança.

@@ -1,4 +1,4 @@
-# Introdução do Projeto com Rust
+# Introdução do Projeto
 
 Um projeto de implementação de uma criptomoeda é um exemplo de como as premissas de Rust alinham-se com os requisitos e desafios técnicos envolvidos. Desse modo, exploraramos a linguagem Rust e como ela se porta para este tipo de aplicação devido a exigência de segurança e performance.
 ## Premissas da Linguagem e sua Aplicabilidade

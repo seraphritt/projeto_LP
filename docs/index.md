@@ -46,8 +46,8 @@
 </table>
 </center>
 
-## Sobre Blockchain e Criptomoedas
+## Sobre o Projeto
 
-O Blockchain consiste num registro público de todas as transações de um determinado tipo, organizado em blocos conectados de forma encadeada, garantindo transparência, imutabilidade e segurança.
+Este projeto envolve a criação e implementação de uma criptomoeda utilizando *blockchain* em Rust. A *blockchain* serve como o histórico para todas as transações efetuadas pelos usuários da criptomoeda, garantindo segurança e imutabilidade dos dados transacionais.
 
-As Criptomoedas consistem numa forma de dinheiro digital descentralizado em que pode ser aplicada a Blockchain para registrar as transações com segurança e confiabilidade.
+A linguagem foi selecionada devido às suas características em termos de segurança, eficiência de concorrência e alto desempenho.

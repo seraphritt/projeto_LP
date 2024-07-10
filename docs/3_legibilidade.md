@@ -3,7 +3,7 @@
 
 ## Simplicidade Global
 
-Rust se esforça para ser simples sem sacrificar poder. Ele evita ter muitos componentes básicos desnecessários e tenta evitar a multiplicidade de recursos para fazer a mesma coisa. Vamos ver um exemplo simples:
+Rust tem uma boa simplicidade global por possuir uma estrutura bem definida na definição de variáveis e execução de operações.
 
 Em Rust:
 ```rust
@@ -145,11 +145,11 @@ int main() {
     return 0;
 }
 ```
-* if, else if, else vs if, else if, else: Tanto em Rust quanto em C++, a estrutura condicional if, else if, else é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
+* **if**, **else** **if**, **else** *versus* **if**, **else if**, **else**: Tanto em Rust quanto em C++, a estrutura condicional if, else if, else é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
 
-* match vs switch: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exhaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
+* **match** vs **switch**: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
 
-* Loops: Ambas as linguagens suportam loops for para iterar sobre uma faixa de valores. Rust usa .. para gerar uma faixa exclusiva (0 até 4 no exemplo), enquanto C++ usa < para definir a condição de término do loop.
+* ***Loops***: Ambas as linguagens suportam *loops* for para iterar sobre uma faixa de valores. Rust usa .. para gerar uma faixa exclusiva (0 até 4 no exemplo), enquanto C++ usa < para definir a condição de término do loop.
 
 Rust, ao evitar construções como goto, promove um código mais estruturado e legível, incentivando o uso de construções de controle mais seguras e expressivas. C++ oferece mais flexibilidade em algumas áreas, mas também permite o uso de goto, o que pode complicar o entendimento e a manutenção do código, se mal utilizado.
 
