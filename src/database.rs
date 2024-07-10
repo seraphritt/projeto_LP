@@ -1,12 +1,13 @@
-use actix_web::web::block;
-use serde::{Deserialize, Serialize};
+// use actix_web::web::block;
+// use serde::{Deserialize, Serialize};
 use serde_json;
-use sled::Db;
-use std::fmt;
+// use rand::Rng;
+// use sled::Db;
+// use std::fmt;
 
 use crate::blockchain::{Block, Blockchain};
 use crate::transaction::Transaction;
-use crate::wallet::Wallet;
+// use crate::wallet::Wallet;
 
 pub struct KeyValueStore {
     pub db: sled::Db,
@@ -70,17 +71,6 @@ impl KeyValueStore {
         self.db.len()
     }
 }
-
-// #[derive(Serialize, Deserialize, Debug)]
-// pub struct Transaction {
-//     pub id: String,
-//     pub data: String,
-// }
-// impl std::fmt::Display for Transaction {
-//     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-//         write!(f, "({}, {})", self.id, self.data)
-//     }
-// }
 
 pub struct BlockchainDB {
     kv_store: KeyValueStore,
@@ -165,67 +155,5 @@ impl BlockchainDB {
             None => Ok(None),
         };
         result.unwrap()
-    }
-}
-
-pub struct WalletDB {
-    pub kv_store: KeyValueStore,
-}
-
-impl WalletDB {
-    pub fn new(db_path: String) -> Self {
-        let kv_store = KeyValueStore {
-            db: KeyValueStore::open(db_path),
-        };
-        Self { kv_store: kv_store }
-    }
-
-    pub fn check_balance(&self, wallet: &mut Wallet) {
-        let name = wallet.ladscoin_address.clone();
-        let balance = self
-            .kv_store
-            .prefix_scan(&TXN_PREFIX.to_string())
-            .iter()
-            .map(|(_, value)| {
-                serde_json::from_str::<Transaction>(value.as_str())
-                    .unwrap()
-                    .consume_transaction(&name)
-            })
-            .sum();
-
-        wallet.balance = balance;
-    }
-
-    pub fn create_transaction(
-        &self,
-        wallet: &Wallet,
-        money: i64,
-        target_address: &String,
-    ) -> Option<Transaction> {
-        if wallet.balance >= money {
-            let new_id: u64 = 1; // TODO: Change to random number
-            return Some(Transaction {
-                id: new_id,
-                from: wallet.ladscoin_address.clone(),
-                to: target_address.clone(),
-                money,
-            });
-        }
-        None
-    }
-
-    pub fn register_wallet(&self, wallet: &Wallet) {
-        let new_id = 2;
-        let txn = Transaction {
-            id: new_id,
-            from: "".to_string(),
-            to: wallet.ladscoin_address.clone(),
-            money: wallet.balance,
-        };
-
-        let json_string = serde_json::to_string(&txn).unwrap();
-        let prefix = TXN_PREFIX.to_string();
-        let key = prefix + &txn.id.to_string();
-        self.kv_store.put(&key, &json_string)
     }
 }

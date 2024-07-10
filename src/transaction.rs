@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
-use sled::transaction;
+// use sled::transaction;
+use std::fmt;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Transaction {
@@ -7,7 +8,16 @@ pub struct Transaction {
     pub from: String,
     pub to: String,
     pub money: i64,
-    // pub locktime: f64,
+}
+
+impl fmt::Display for Transaction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "Transaction {}: {} -> {} (${})",
+            self.id, self.from, self.to, self.money
+        )
+    }
 }
 
 impl Transaction {
