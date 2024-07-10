@@ -1,0 +1,31 @@
+# Introdução
+
+Implementar uma criptomoeda é um exemplo de projeto complexo que demonstra, de maneira eficaz, como as premissas de performance e segurança de uma linguagem de programação são de importante escolha para atingir o êxito necessário na aplicação de um projeto computacional. Para que seja possível desenvolver um sistema de tamanha complexidade, é necessário que seja escolhida uma linguagem alinhada com o objetivo de compreender e resolver as premissas e desafios técnicos propostos. Neste cenário, Rust se destaca, principalmente por sua capacidade de garantir alto nível de segurança de memória e desempenho eficiente, características essenciais para que se chegue ao encontro dos objetivos colocados. Sua abordagem única, no contexto do gerenciamento de memória, permite melhor controle de recursos e tratamento de erros, tornando esta a linguagem ideal para o desenvolvimento do projeto.
+
+## Premissas da Linguagem e sua Aplicabilidade
+
+### Segurança de Memória
+* Relevância: Em um projeto de criptomoeda, a segurança é absolutamente crítica. Falhas de segurança podem resultar em perdas financeiras significativas para os usuários e descredibilidade da criptomoeda, bem como da organização responsável pela mesma.
+
+* Implementação: Rust garante segurança de memória através de seu sistema único de propriedade (ownership) e empréstimo (borrowing). Isso elimina preocupações comuns como vulnerabilidades de *buffer overflow*, vazamento de memória e data races, proporcionando uma base sólida para a implementação segura de uma criptomoeda.
+
+### Performance
+* Relevância: Criptomoedas demandam alta performance, tanto para o processamento de transações quanto para a mineração de blocos.
+
+* Implementação: Rust oferece performance comparável a linguagens de baixo nível como C e C++, permitindo controle direto e seguro sobre a alocação de memória e otimizações pelo compilador.
+
+### Concorrência Segura
+* Relevância: Transações com criptomoedas envolvem múltiplos agentes operando simultaneamente. Portanto, é importante garantir que operações concorrentes sejam seguras.  
+
+* Implementação: Rust oferece primitivas seguras para concorrência, como tipos Send e Sync, que garantem a segurança de operações concorrentes sem comprometer a performance. Isso assegura que a blockchain da criptomoeda possa lidar com transações concorrentes de forma eficiente e sem riscos de inconsistências.
+
+### Abstração sem Overhead
+* Relevância: Desenvolver uma criptomoeda requer abstrações de alto nível para lidar com complexidades como transações, contratos inteligentes e validação de blocos.
+
+* Implementação: Rust permite abstrações poderosas e eficientes através de mecanismos como traits, enums e pattern matching. Isso facilita a implementação de algoritmos criptográficos complexos e estruturas de dados customizadas, sem introduzir overheads desnecessários que poderiam impactar negativamente a performance da rede.
+
+## Usuário Característico e Domínio de Aplicação
+
+* Usuário Característico: Desenvolvedores e engenheiros com experiência em linguagens como C, C++ e que desejam desenvolver uma aplicação que exige segurança, performance e escabilidade.
+
+* Domínio de Aplicação: Sistemas Operacionais (Redox OS), compiladores, sistemas embarcados, WebAssembly, Ferramnetas que exigem segurança e controle de memória.

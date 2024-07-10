@@ -1,0 +1,7 @@
+/target
+.DS_Store
+.vscode
+blockchain_db/
+my_db/
+server_db/
+data/
