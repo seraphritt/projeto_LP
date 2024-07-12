@@ -54,7 +54,3 @@ Este projeto envolve a criação e implementação de uma criptomoeda utilizando
 <div style="text-align: justify; margin-bottom: 1em;">
 A linguagem foi selecionada devido às suas características em termos de segurança, eficiência de concorrência e alto desempenho.
 </div>
-
-<p align="center">
-  <img style="border-radius: 5%;" src="../images/ladcoin.png" alt="Ícone da criptomoeda">
-</p>
