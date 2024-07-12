@@ -24,11 +24,11 @@ int main() {
     return 0;
 }
 ```
-Ambos os exemplos são relativamente simples. Rust pode parecer mais explícito em certos aspectos (como o uso de mut para variáveis mutáveis), mas isso também ajuda na legibilidade ao indicar claramente a mutabilidade.
+<div style="text-align: justify; margin-bottom: 1em;">Ambos exemplos são relativamente simples. Rust pode parecer mais explícito em certos aspectos (como o uso de mut para variáveis mutáveis), mas isso também ajuda na legibilidade ao indicar claramente a mutabilidade.</div>
 
 ## Ortogonalidade
 
-Rust promove uma boa ortogonalidade, onde combinações de conceitos primitivos são significativas e consistentes. Isso significa que conceitos como propriedades de mutabilidade, gerenciamento de memória e segurança são tratados de forma consistente em todo o código.
+<div style="text-align: justify; margin-bottom: 1em;">Rust promove uma boa ortogonalidade, onde combinações de conceitos primitivos são significativas e consistentes. Isso significa que conceitos como propriedades de mutabilidade, gerenciamento de memória e segurança são tratados de forma consistente em todo o código.</div>
 
 Em Rust:
 ```rust
@@ -79,11 +79,11 @@ int main() {
 }
 ```
 
-Em ambos os exemplos, a ortogonalidade é evidente na forma como Rust e C++ lidam com os conceitos fundamentais de orientação a objetos e gerenciamento de recursos. Rust impõe regras rigorosas para garantir segurança e prevenção de erros, enquanto C++ oferece mais flexibilidade, mas requer maior responsabilidade do programador para garantir a segurança e a eficiência do código.
+<div style="text-align: justify; margin-bottom: 1em;">Em ambos exemplos, a ortogonalidade é evidente na forma como Rust e C++ lidam com os conceitos fundamentais de orientação a objetos e gerenciamento de recursos. Rust impõe regras rigorosas para garantir segurança e prevenção de erros, enquanto C++ oferece mais flexibilidade, mas requer maior responsabilidade do programador para garantir a segurança e a eficiência do código.</div>
 
 ## Instruções de Controle
 
-Rust evita construções como goto que podem complicar o fluxo de controle. Em vez disso, incentiva o uso de estruturas de controle mais seguras e previsíveis, como if, match e loops.
+<div style="text-align: justify; margin-bottom: 1em;">Rust evita construções como goto que podem complicar o fluxo de controle. Em vez disso, incentiva o uso de estruturas de controle mais seguras e previsíveis, como if, match e loops.</div>
 
 Em Rust:
 ```rust
@@ -145,15 +145,21 @@ int main() {
     return 0;
 }
 ```
-* **if**, **else** **if**, **else** *versus* **if**, **else if**, **else**: Tanto em Rust quanto em C++, a estrutura condicional if, else if, else é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
+* <div style="text-align: justify; margin-bottom: 1em;">
+  <strong>if</strong>, <strong>else</strong> <strong>if</strong>, <strong>else</strong> <em>versus</em> <strong>if</strong>, <strong>else if</strong>, <strong>else</strong>: Tanto em Rust quanto em C++, a estrutura condicional <strong>if</strong>, <strong>else if</strong>, <strong>else</strong> é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
+</div>
 
-* **match** vs **switch**: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
+* <div style="text-align: justify; margin-bottom: 1em;">
+  <strong>match</strong> vs <strong>switch</strong>: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
+</div>
 
-* ***Loops***: Ambas as linguagens suportam *loops* for para iterar sobre uma faixa de valores. Rust usa .. para gerar uma faixa exclusiva (0 até 4 no exemplo), enquanto C++ usa < para definir a condição de término do loop.
+* <div style="text-align: justify; margin-bottom: 1em;">
+  <strong>Loops</strong>: Ambas as linguagens suportam *loops* for para iterar sobre uma faixa de valores. Rust usa .. para gerar uma faixa exclusiva (0 até 4 no exemplo), enquanto C++ usa < para definir a condição de término do loop.
+</div>
 
-Rust, ao evitar construções como goto, promove um código mais estruturado e legível, incentivando o uso de construções de controle mais seguras e expressivas. C++ oferece mais flexibilidade em algumas áreas, mas também permite o uso de goto, o que pode complicar o entendimento e a manutenção do código, se mal utilizado.
+<div style="text-align: justify; margin-bottom: 1em;">Rust, ao evitar construções como goto, promove um código mais estruturado e legível, incentivando o uso de construções de controle mais seguras e expressivas. C++ oferece mais flexibilidade em algumas áreas, mas também permite o uso de goto, o que pode complicar o entendimento e a manutenção do código, se mal utilizado.</div>
 
-Em resumo, Rust e C++ proporcionam ferramentas poderosas para controle de fluxo, mas Rust, com suas abordagens mais modernas e restritivas, tende a promover práticas de programação mais seguras e legíveis, especialmente em cenários onde o controle de fluxo é crucial para a clareza do código.
+<div style="text-align: justify; margin-bottom: 1em;">Em resumo, Rust e C++ proporcionam ferramentas poderosas para controle de fluxo, mas Rust, com suas abordagens mais modernas e restritivas, tende a promover práticas de programação mais seguras e legíveis, especialmente em cenários onde o controle de fluxo é crucial para a clareza do código.</div>
 
 ## Tipos de Dados e Estruturas
 
@@ -249,16 +255,16 @@ int main() {
 }
 ```
 
-* Enums: Rust usa enums de forma poderosa, permitindo a definição de variantes com dados associados, como Forma::Retangulo { largura, altura }. C++ também tem enums, mas não suporta dados associados sem o uso de classes.
-* Structs: Ambas as linguagens suportam structs para definir estruturas de dados. Rust permite métodos e implementações diretamente associadas às structs, enquanto em C++ é necessário usar classes para isso.
-* Tuples: Rust e C++ suportam tuples para agrupar múltiplos valores em um único tipo. Rust usa a sintaxe (valor1, valor2) para criar e acessar tuples, enquanto C++ usa std::tuple e std::get para o mesmo propósito.
+* <div style="text-align: justify; margin-bottom: 1em;">Enums: Rust usa enums de forma poderosa, permitindo a definição de variantes com dados associados, como Forma::Retangulo { largura, altura }. C++ também tem enums, mas não suporta dados associados sem o uso de classes.</div>
+* <div style="text-align: justify; margin-bottom: 1em;">Structs: Ambas as linguagens suportam structs para definir estruturas de dados. Rust permite métodos e implementações diretamente associadas às structs, enquanto em C++ é necessário usar classes para isso.</div>
+* <div style="text-align: justify; margin-bottom: 1em;">Tuples: Rust e C++ suportam tuples para agrupar múltiplos valores em um único tipo. Rust usa a sintaxe (valor1, valor2) para criar e acessar tuples, enquanto C++ usa std::tuple e std::get para o mesmo propósito.</div>
 
-Rust se destaca na segurança e na expressividade de seus tipos de dados, garantindo que cada valor tenha um único proprietário (propriedade de propriedade). Isso ajuda a prevenir erros comuns de gerenciamento de memória, como vazamentos e referências inválidas. Em contraste, C++ oferece mais flexibilidade, mas com um custo maior em termos de gerenciamento de memória seguro e legibilidade.
+<div style="text-align: justify; margin-bottom: 1em;">Rust se destaca na segurança e na expressividade de seus tipos de dados, garantindo que cada valor tenha um único proprietário (propriedade de propriedade). Isso ajuda a prevenir erros comuns de gerenciamento de memória, como vazamentos e referências inválidas. Em contraste, C++ oferece mais flexibilidade, mas com um custo maior em termos de gerenciamento de memória seguro e legibilidade.</div>
 
 ## Aspectos da Sintaxe
 
-Rust possui uma sintaxe moderna que é projetada para ser clara e expressiva. Por exemplo, utiliza palavras-chave claras e não sobrecarrega o uso de operadores especiais. Identificadores descritivos são incentivados, o que melhora a legibilidade.
+<div style="text-align: justify; margin-bottom: 1em;">Rust possui uma sintaxe moderna que é projetada para ser clara e expressiva. Por exemplo, utiliza palavras-chave claras e não sobrecarrega o uso de operadores especiais. Identificadores descritivos são incentivados, o que melhora a legibilidade.</div>
 
-Comparando com C++, Rust muitas vezes pode parecer mais verboso em certos aspectos (como o uso de mut para indicar mutabilidade), mas essa verbosidade também pode melhorar a legibilidade ao tornar as intenções do código mais claras. C++ tende a ser mais flexível em alguns aspectos, mas essa flexibilidade pode levar a códigos menos legíveis se não for usada com cuidado.
+<div style="text-align: justify; margin-bottom: 1em;">Comparando com C++, Rust muitas vezes pode parecer mais verboso em certos aspectos (como o uso de mut para indicar mutabilidade), mas essa verbosidade também pode melhorar a legibilidade ao tornar as intenções do código mais claras. C++ tende a ser mais flexível em alguns aspectos, mas essa flexibilidade pode levar a códigos menos legíveis se não for usada com cuidado.</div>
 
-Em resumo, Rust foi projetado com foco na legibilidade, segurança e performance, procurando equilibrar simplicidade com poder. Embora seja diferente de C++ em muitos aspectos, ambos têm seus méritos e são capazes de produzir código legível, desde que os desenvolvedores sigam boas práticas de codificação
+<div style="text-align: justify; margin-bottom: 1em;">Em resumo, Rust foi projetado com foco na legibilidade, segurança e performance, procurando equilibrar simplicidade com poder. Embora seja diferente de C++ em muitos aspectos, ambos têm seus méritos e são capazes de produzir código legível, desde que os desenvolvedores sigam boas práticas de codificação. </div>

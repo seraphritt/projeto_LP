@@ -2,12 +2,12 @@
 
 ## Simplicidade e Ortogonalidade
 
-Rust é projetada com poucos componentes básicos e regras consistentes para combiná-los, o que facilita a aprendizagem e a escrita de código robusto. A ortogonalidade em Rust é moderada; ela enfatiza a segurança e o gerenciamento de memória seguro, o que pode requerer um pouco mais de entendimento para programadores novatos, mas traz benefícios significativos em termos de prevenção de erros.
+<div style="text-align: justify; margin-bottom: 1em;">Rust é projetada com poucos componentes básicos e regras consistentes para combiná-los, o que facilita a aprendizagem e a escrita de código robusto. A ortogonalidade em Rust é moderada; ela enfatiza a segurança e o gerenciamento de memória seguro, o que pode requerer um pouco mais de entendimento para programadores novatos, mas traz benefícios significativos em termos de prevenção de erros.</div>
 
 
 ## Suporte para Abstração
 
-Rust oferece suporte robusto para abstração de dados e processo e possui suporte para classes e registros. Ela permite a definição de estruturas complexas e operações abstratas através de mecanismos como traits (traços) e enums, o que facilita a expressão de ideias complexas de forma clara e segura.
+<div style="text-align: justify; margin-bottom: 1em;">Rust oferece suporte robusto para abstração de dados e processo e possui suporte para classes e registros. Ela permite a definição de estruturas complexas e operações abstratas através de mecanismos como traits (traços) e enums, o que facilita a expressão de ideias complexas de forma clara e segura.</div>
 
 Em Rust:
 ```rust
@@ -51,13 +51,13 @@ int main() {
     return 0;
 }
 ```
-Rust suporta abstração com traits, permitindo definir comportamentos comuns que podem ser implementados por diferentes tipos de dados de forma segura.
+<div style="text-align: justify; margin-bottom: 1em;">Rust suporta abstração com traits, permitindo definir comportamentos comuns que podem ser implementados por diferentes tipos de dados de forma segura.</div>
 
 ## Expressividade
 
-Rust é conhecida por sua expressividade, proporcionando formas convenientes de especificar computações. Seu sistema de tipos forte e sua inferência de tipos ajudam a reduzir a sobrecarga de escrita de código repetitivo.
+<div style="text-align: justify; margin-bottom: 1em;">Rust é conhecida por sua expressividade, proporcionando formas convenientes de especificar computações. Seu sistema de tipos forte e sua inferência de tipos ajudam a reduzir a sobrecarga de escrita de código repetitivo.</div>
 
-C++ oferece expressividade através de funcionalidades como sobrecarga de operadores e templates, mas pode resultar em código mais verboso e propenso a erros.
+<div style="text-align: justify; margin-bottom: 1em;">C++ oferece expressividade através de funcionalidades como sobrecarga de operadores e templates, mas pode resultar em código mais verboso e propenso a erros.</div>
 
 Em Rust:
 ```rust
@@ -98,15 +98,17 @@ int main() {
 }
 ```
 
-Ambos os exemplos mostram como Rust e C++ podem ser expressivos ao manipular dados e realizar computações. Rust se destaca pela sua sintaxe mais moderna e segura, especialmente ao lidar com manipulação de coleções e closures. Por outro lado, C++ oferece uma rica biblioteca padrão (STL) que permite realizar tarefas similares, mas com uma sintaxe que pode exigir mais código para atingir o mesmo resultado.
+<div style="text-align: justify; margin-bottom: 1em;">Ambos exemplos mostram como Rust e C++ podem ser expressivos ao manipular dados e realizar computações. Rust se destaca pela sua sintaxe mais moderna e segura, especialmente ao lidar com manipulação de coleções e closures. Por outro lado, C++ oferece uma rica biblioteca padrão (STL) que permite realizar tarefas similares, mas com uma sintaxe que pode exigir mais código para atingir o mesmo resultado.</div>
 
-Em termos de capacidade de escrita, Rust geralmente proporciona uma experiência mais fluida, especialmente para desenvolvedores que valorizam a prevenção de erros e a clareza do código.
+<div style="text-align: justify; margin-bottom: 1em;">Em termos de capacidade de escrita, Rust geralmente proporciona uma experiência mais fluida, especialmente para desenvolvedores que valorizam a prevenção de erros e a clareza do código.</div>
 
 ## Sintaxe
 
-A sintaxe em Rust é projetada para ser expressiva, usando um sistema de empréstimos (passagem por referência) e movimentos que ajuda a evitar problemas comuns de gerenciamento de memória, bem como instruções de inferência de tipo que auxiliam na **capacidade de escrita**.
+<div style="text-align: justify; margin-bottom: 1em;">
+  A sintaxe em Rust é projetada para ser expressiva, usando um sistema de empréstimos (passagem por referência) e movimentos que ajuda a evitar problemas comuns de gerenciamento de memória, bem como instruções de inferência de tipo que auxiliam na <strong>capacidade de escrita</strong>.
+</div>
 
-C++ tem uma sintaxe flexível, mas pode ser mais verbosa e menos segura se não for utilizada corretamente, especialmente em relação ao gerenciamento de memória.
+<div style="text-align: justify; margin-bottom: 1em;">C++ tem uma sintaxe flexível, mas pode ser mais verbosa e menos segura se não for utilizada corretamente, especialmente em relação ao gerenciamento de memória.</div>
 
 Em Rust:
 ```rust

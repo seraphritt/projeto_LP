@@ -2,7 +2,7 @@
 
 ## Verificação de Tipos
 
-Rust realiza verificação de tipos em tempo de compilação de forma ainda mais rigorosa do que o C++, verificando também propriedades como a mutabilidade de uma variável e a reutilização dela em outras partes do código.
+<div style="text-align: justify; margin-bottom: 1em;">Rust realiza verificação de tipos em tempo de compilação de forma ainda mais rigorosa do que o C++, verificando também propriedades como a mutabilidade de uma variável e a reutilização dela em outras partes do código.</div>
 
 Em Rust:
 ```rust
@@ -27,7 +27,7 @@ int main() {
 
 ## Tratamento de Exceções
 
-Rust utiliza o conceito de Resultados (Result) para lidar com erros de forma explícita, evitando exceções tradicionais, o que promove um código mais previsível e menos propenso a falhas inesperadas.
+<div style="text-align: justify; margin-bottom: 1em;">Rust utiliza o conceito de Resultados (Result) para lidar com erros de forma explícita, evitando exceções tradicionais, o que promove um código mais previsível e menos propenso a falhas inesperadas.</div>
 
 Em Rust:
 ```rust
@@ -57,7 +57,7 @@ int main() {
 
 ## Aliasing
 
-Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo a possibilidade de erros relacionados a aliasing.
+<div style="text-align: justify; margin-bottom: 1em;">Rust é forte na prevenção de problemas de aliasing através do sistema de propriedade (ownership) e empréstimos (borrowing). Esses conceitos garantem que apenas uma referência mutável ou várias referências imutáveis possam existir para um único dado recurso ao mesmo tempo, reduzindo a possibilidade de erros relacionados a aliasing.</div>
 
 Em Rust:
 ```rust
