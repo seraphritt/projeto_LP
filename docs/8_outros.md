@@ -8,11 +8,16 @@ Rust possui ampla documentação, que pode ser acessada no site oficial da lingu
 
 ## Generalidade
 
-Rust é uma linguagem de programação altamente versátil, podendo ser utilizada em uma ampla gama de aplicações. Esta flexibilidade é evidenciada em diversos domínios.
+<div style="text-align: justify; margin-bottom: 0.5em;">Rust é uma linguagem de programação altamente versátil, podendo ser utilizada em uma ampla gama de aplicações. Esta flexibilidade é evidenciada em diversos domínios.</div>
+
 * <div style="text-align: justify; margin-bottom: 0.5em;"><strong>Desenvolvimento de Sistemas</strong>: Devido a seu controle sobre recursos e desempenho, a linguagem pode ser utilizada para o desenvolvimento de sistemas operacionais, drivers e softwares de baixo nível em geral.</div>
+
 * <div style="text-align: justify; margin-bottom: 0.5em;"><strong>Desenvolvimento Web</strong>: Com o suporte a WebAssembly, Rust é uma escolha excelente para desenvolver aplicações web que requerem alto desempenho. Sua capacidade de compilar código Rust para Wasm permite que desenvolvedores criem aplicações web rápidas e eficientes, competindo diretamente com linguagens tradicionalmente usadas no desenvolvimento dessas tarefas.</div>
+
 * <div style="text-align: justify; margin-bottom: 0.5em;"><strong>Aplicações de Rede</strong>: Rust possui uma biblioteca padrão poderosa e um ecossistema de crates bem estabelecido, que facilita o desenvolvimento de servidores, protocolos de rede e sistemas distribuídos. Por possuir excelente desempenho no contexto da segurança e concorrência eficiente dos projetos, se tornou uma escolha popular na criação de sistemas que exigem comunicação robusta pela rede.</div>
+
 * <div style="text-align: justify; margin-bottom: 0.5em;"><strong>Programação de Jogos</strong>: Na indústria de jogos, Rust vem ganhando destaque devido a seu desempenho próximo ao de outras linguagens de baixo nível, como C++, e sua segurança, responsável por evitar erros comuns.</div>
+
 * <div style="text-align: justify;"><strong>Ferramentas e Aplicações de Utilidade Geral</strong>: Além dos domínios mencionados, Rust é aplicável em uma ampla variedade de outras áreas, como ferramentas de desenvolvimento, análise de dados, sistemas embarcados, computação distribuída e muito mais.</div>
 
 ## Portabilidade
