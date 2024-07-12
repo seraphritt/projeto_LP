@@ -56,5 +56,5 @@ A linguagem foi selecionada devido às suas características em termos de segura
 </div>
 
 <p align="center">
-    <img style="border-radius: 50%;" src="../images/ladcoin.png"/>
+  <img style="border-radius: 5%;" src="../images/ladcoin.png" alt="Ícone da criptomoeda">
 </p>
