@@ -13,7 +13,9 @@ fn main () {
 ```
 
 ## Tipos primitivos
+<div style="text-align: justify; margin-bottom: 1em;">
 Rust possui um rico sistema de tipos primitivos, que são verificados em tempo de compilação. Estes tipos podem ser declarados explicitamente ou inferidos pelo compilador. Alguns deles, são:
+</div>
 
 * Inteiro : Em Rust, os inteiros (int) podem, em sua declaração, indicar o valor associado com base em seu tamanho. Além disso, pode ser declarado como signed (positivos e negativos) ou unsigned (apenas positivos).
 
@@ -70,11 +72,15 @@ Palavras que podem ser utilizadas apenas em seu contexto correto. Não podem ser
   <img src="../images/strict.png" alt="Ícone de palavras reservadas em Rust" style="margin-left: 50px" width="500">
 </p>
 
-
+<div style="text-align: justify; margin-bottom: 1em;">
 Além destas palavras, ainda temos, em Rust, a presença de outras palavras reservadas. Estas, especificamenteme, ainda não tem seu uso definido pela linguagem, mas estão reservadas para uso futuro. São elas: abstract, become, box, do, final, macro, override, priv, typeof, unsized, virtual, yield.
+</div>
 
 ## Modificadores de acesso
+<div style="text-align: justify; margin-bottom: 1em;">
 Por padrão, a visibilidade de declarações em Rust é privada. Para torná-la pública, o desenvolvedor deve utilizar a palavra-chave "pub", identificando o escopo em que deseja que a variável ou método seja público. As regras para isso são:
+</div>
+
 * pub(in path): faz o item visível dentro do path fornecido. path deve ser um módulo ancestral deste item
 * pub(crate): torna o item visível dentro da caixa atual
 * pub(super): torna o item visível para o módulo pai. Equivale a pub(in super).
@@ -90,9 +96,12 @@ pub struct PublicStruct { // declaração alterada para pública
 }
 ```
 ## Tratamento de Erros
+<div style="text-align: justify; margin-bottom: 1em;">
 Rust adota um modelo de tratamento de erros que, em comparação com outras linguagens, é distinto e rigoroso. Em vez de usar exceções, Rust utiliza enums e tipos de retorno específicos para garantir que todos os erros possíveis sejam tratados de forma explícita.
+</div>
 
 Em Rust, não há null nem exceptions e separa os erros em duas categorias:
+
 * Recuperável: programa consegue tratar e continuar funcionando, podendo ser retornado pela função de onde ocorreu. Funções com erros recuperáveis retornam uma enumeração Result que referencia dois casos: um deles é o tipo do retorno em caso de sucesso e o outro, em caso de fracasso. 
 * Irrecuperável: o programa não consegue tratar e deve encerrar sua execução imediatamente.
 
