@@ -1,4 +1,4 @@
-# Custos e Qualidade da Definição
+# Custos
 ## Custo de Treinamento
 ### Simplicidade e Ortogonalidade da Linguagem
 
@@ -23,9 +23,4 @@
 ## Custo para Executar Programas
 ### Projeto da Linguagem
 
-<div style="text-align: justify; margin-bottom: 1em;">Rust inclui verificação forte de tipos em tempo de compilação e isso ajuda a reduzir erros e falhas de segurança que poderiam ocorrer durante a execução do programa. Entretanto, como dito anteriormente, essa forte verificação causa lentidão em códigos maiores, o que pode ser uma desvantagem a depender da aplicação. </div>
-
-## Qualidade da Definição
-### Gramática
-
-<div style="text-align: justify; margin-bottom: 1em;">A linguagem de programação em questão possui uma ampla documentação que pode ser acessada pelo link [www.rust-lang.org/learn](https://www.rust-lang.org/learn), onde estão presentes as informações sobre a gramática da linguagem e sua sintaxe. Ademais, atualmente possui uma comunidade bastante ativa e que colabora para o crescimento e a ampliação do uso da linguagem. </div>
+<div style="text-align: justify;">Rust inclui verificação forte de tipos em tempo de compilação e isso ajuda a reduzir erros e falhas de segurança que poderiam ocorrer durante a execução do programa. Entretanto, como dito anteriormente, essa forte verificação causa lentidão em códigos maiores, o que pode ser uma desvantagem a depender da aplicação. </div>

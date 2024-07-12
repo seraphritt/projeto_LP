@@ -17,3 +17,7 @@
 8. PAULO. Diferenças na propagação e tratamentos de erros em Rust, Golang e Java. Disponível em: https://xxpauloxx.com.br/diferen%C3%A7as-na-propaga%C3%A7%C3%A3o-e-tratamentos-de-erros-em-rust-golang-e-java-ef8975300bc. Acesso em: 10 jul. 2024.
 
 10. TABNEWS. O "Hello World" de Rust que você nunca viu: Entendendo Rust. Disponível em: https://www.tabnews.com.br/coffeeispower/o-hello-world-de-rust-que-voce-nunca-viu-entendendo-rust. Acesso em: 10 jul. 2024.
+
+11. RUST EMBEDDED. Interoperability. Disponível em: https://docs.rust-embedded.org/book/interoperability/index.html. Acesso em: 10 jul. 2024.
+
+12. RUST EMBEDDED. Portability. Disponível em: https://docs.rust-embedded.org/book/portability/index.html. Acesso em: 10 jul. 2024.
