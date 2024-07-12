@@ -49,8 +49,12 @@
 ## Sobre o Projeto
 
 <div style="text-align: justify; margin-bottom: 1em;">
-Este projeto envolve a criação e implementação de uma criptomoeda utilizando *blockchain* em Rust. A *blockchain* serve como o histórico para todas as transações efetuadas pelos usuários da criptomoeda, garantindo segurança e imutabilidade dos dados transacionais.
+Este projeto envolve a criação e implementação de uma criptomoeda utilizando <i>blockchain</i> em Rust. A *blockchain* serve como o histórico para todas as transações efetuadas pelos usuários da criptomoeda, garantindo segurança e imutabilidade dos dados transacionais.
 </div>
 <div style="text-align: justify; margin-bottom: 1em;">
 A linguagem foi selecionada devido às suas características em termos de segurança, eficiência de concorrência e alto desempenho.
 </div>
+
+<p align="center">
+    <img style="border-radius: 50%;" src="../images/ladcoin.png"/>
+</p>
