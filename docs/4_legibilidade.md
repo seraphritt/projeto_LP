@@ -145,11 +145,11 @@ int main() {
     return 0;
 }
 ```
-* <div style="text-align: justify; margin-bottom: 1em;">
+* <div style="text-align: justify; margin-bottom: 0.5em;">
   <strong>if</strong>, <strong>else</strong> <strong>if</strong>, <strong>else</strong> <em>versus</em> <strong>if</strong>, <strong>else if</strong>, <strong>else</strong>: Tanto em Rust quanto em C++, a estrutura condicional <strong>if</strong>, <strong>else if</strong>, <strong>else</strong> é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
 </div>
 
-* <div style="text-align: justify; margin-bottom: 1em;">
+* <div style="text-align: justify; margin-bottom: 0.5em;">
   <strong>match</strong> vs <strong>switch</strong>: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
 </div>
 
@@ -255,8 +255,8 @@ int main() {
 }
 ```
 
-* <div style="text-align: justify; margin-bottom: 1em;">Enums: Rust usa enums de forma poderosa, permitindo a definição de variantes com dados associados, como Forma::Retangulo { largura, altura }. C++ também tem enums, mas não suporta dados associados sem o uso de classes.</div>
-* <div style="text-align: justify; margin-bottom: 1em;">Structs: Ambas as linguagens suportam structs para definir estruturas de dados. Rust permite métodos e implementações diretamente associadas às structs, enquanto em C++ é necessário usar classes para isso.</div>
+* <div style="text-align: justify; margin-bottom: 0.5em;">Enums: Rust usa enums de forma poderosa, permitindo a definição de variantes com dados associados, como Forma::Retangulo { largura, altura }. C++ também tem enums, mas não suporta dados associados sem o uso de classes.</div>
+* <div style="text-align: justify; margin-bottom: 0.5em;">Structs: Ambas as linguagens suportam structs para definir estruturas de dados. Rust permite métodos e implementações diretamente associadas às structs, enquanto em C++ é necessário usar classes para isso.</div>
 * <div style="text-align: justify; margin-bottom: 1em;">Tuples: Rust e C++ suportam tuples para agrupar múltiplos valores em um único tipo. Rust usa a sintaxe (valor1, valor2) para criar e acessar tuples, enquanto C++ usa std::tuple e std::get para o mesmo propósito.</div>
 
 <div style="text-align: justify; margin-bottom: 1em;">Rust se destaca na segurança e na expressividade de seus tipos de dados, garantindo que cada valor tenha um único proprietário (propriedade de propriedade). Isso ajuda a prevenir erros comuns de gerenciamento de memória, como vazamentos e referências inválidas. Em contraste, C++ oferece mais flexibilidade, mas com um custo maior em termos de gerenciamento de memória seguro e legibilidade.</div>
@@ -267,4 +267,4 @@ int main() {
 
 <div style="text-align: justify; margin-bottom: 1em;">Comparando com C++, Rust muitas vezes pode parecer mais verboso em certos aspectos (como o uso de mut para indicar mutabilidade), mas essa verbosidade também pode melhorar a legibilidade ao tornar as intenções do código mais claras. C++ tende a ser mais flexível em alguns aspectos, mas essa flexibilidade pode levar a códigos menos legíveis se não for usada com cuidado.</div>
 
-<div style="text-align: justify; margin-bottom: 1em;">Em resumo, Rust foi projetado com foco na legibilidade, segurança e performance, procurando equilibrar simplicidade com poder. Embora seja diferente de C++ em muitos aspectos, ambos têm seus méritos e são capazes de produzir código legível, desde que os desenvolvedores sigam boas práticas de codificação. </div>
+<div style="text-align: justify;">Em resumo, Rust foi projetado com foco na legibilidade, segurança e performance, procurando equilibrar simplicidade com poder. Embora seja diferente de C++ em muitos aspectos, ambos têm seus méritos e são capazes de produzir código legível, desde que os desenvolvedores sigam boas práticas de codificação. </div>

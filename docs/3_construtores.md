@@ -102,7 +102,7 @@ Rust adota um modelo de tratamento de erros que, em comparação com outras ling
 
 Em Rust, não há null nem exceptions e separa os erros em duas categorias:
 
-* <div style="text-align: justify; margin-bottom: 1em;">Recuperável: programa consegue tratar e continuar funcionando, podendo ser retornado pela função de onde ocorreu. Funções com erros recuperáveis retornam uma enumeração Result que referencia dois casos: um deles é o tipo do retorno em caso de sucesso e o outro, em caso de fracasso. </div>
+* <div style="text-align: justify; margin-bottom: 0.5em;">Recuperável: programa consegue tratar e continuar funcionando, podendo ser retornado pela função de onde ocorreu. Funções com erros recuperáveis retornam uma enumeração Result que referencia dois casos: um deles é o tipo do retorno em caso de sucesso e o outro, em caso de fracasso. </div>
 * Irrecuperável: o programa não consegue tratar e deve encerrar sua execução imediatamente.
 
 A verificação de erros em Rust é fortemente incentivada por meio do uso do operador match, que permite ao desenvolvedor lidar de maneira abrangente com os resultados:
