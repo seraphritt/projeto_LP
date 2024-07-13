@@ -1,0 +1,927 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3_construtores/">
+      
+      
+        <link rel="next" href="../5_escrita/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Legibilidade - LadCoin</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#legibilidade" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LadCoin" class="md-header__button md-logo" aria-label="LadCoin" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LadCoin
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Legibilidade
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LadCoin" class="md-nav__button md-logo" aria-label="LadCoin" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LadCoin
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wiki do Projeto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_introducao/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1_projeto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre o Projeto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2_sobreBlockchain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre a blockchain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1_rust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    História da linguagem Rust
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2_sobreRust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre Rust
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_construtores/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Construtores
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Legibilidade
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Legibilidade
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simplicidade-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simplicidade Global
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ortogonalidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ortogonalidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucoes-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruções de Controle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-dados-e-estruturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Dados e Estruturas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aspectos-da-sintaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aspectos da Sintaxe
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_escrita/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacidade de Escrita
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_confiabilidade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Confiabilidade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_custo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_outros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Outros
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bibliografia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Referências Bibliográficas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simplicidade-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simplicidade Global
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ortogonalidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ortogonalidade
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instrucoes-de-controle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruções de Controle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-dados-e-estruturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Dados e Estruturas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aspectos-da-sintaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aspectos da Sintaxe
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="legibilidade">Legibilidade</h1>
+<h2 id="simplicidade-global">Simplicidade Global</h2>
+<p>Rust tem uma boa simplicidade global por possuir uma estrutura bem definida na definição de variáveis e execução de operações.</p>
+<p>Em Rust:</p>
+<pre><code class="language-rust">fn main() {
+    let mut x = 5; // declaração e inicialização de uma variável mutável
+    x += 2; // incremento
+    println!(&quot;O valor de x é: {}&quot;, x); // saída de texto
+}
+</code></pre>
+<p>Em C++:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+int main() {
+    int x = 5; // declaração e inicialização de uma variável
+    x += 2; // incremento
+    std::cout &lt;&lt; &quot;O valor de x é: &quot; &lt;&lt; x &lt;&lt; std::endl; // saída de texto
+    return 0;
+}
+</code></pre>
+<div style="text-align: justify; margin-bottom: 1em;">Ambos exemplos são relativamente simples. Rust pode parecer mais explícito em certos aspectos (como o uso de mut para variáveis mutáveis), mas isso também ajuda na legibilidade ao indicar claramente a mutabilidade.</div>
+
+<h2 id="ortogonalidade">Ortogonalidade</h2>
+<div style="text-align: justify; margin-bottom: 1em;">Rust promove uma boa ortogonalidade, onde combinações de conceitos primitivos são significativas e consistentes. Isso significa que conceitos como propriedades de mutabilidade, gerenciamento de memória e segurança são tratados de forma consistente em todo o código.</div>
+
+<p>Em Rust:</p>
+<pre><code class="language-rust">struct Pessoa {
+    nome: String,
+    idade: u32,
+}
+
+impl Pessoa {
+    fn novo(nome: String, idade: u32) -&gt; Self {
+        Pessoa { nome, idade }
+    }
+
+    fn cumprimentar(&amp;self) {
+        println!(&quot;Olá, meu nome é {} e eu tenho {} anos.&quot;, self.nome, self.idade);
+    }
+}
+
+fn main() {
+    let mut pessoa = Pessoa::novo(String::from(&quot;Alice&quot;), 30); // criação de uma instância de Pessoa
+    pessoa.cumprimentar(); // chamada de método imutável
+}
+
+</code></pre>
+<p>Em C++:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+class Pessoa {
+private:
+    std::string nome;
+    int idade;
+
+public:
+    Pessoa(std::string nome, int idade) : nome(nome), idade(idade) {}
+
+    void cumprimentar() const {
+        std::cout &lt;&lt; &quot;Olá, meu nome é &quot; &lt;&lt; nome &lt;&lt; &quot; e eu tenho &quot; &lt;&lt; idade &lt;&lt; &quot; anos.&quot; &lt;&lt; std::endl;
+    }
+};
+
+int main() {
+    Pessoa pessoa(&quot;Alice&quot;, 30); // criação de uma instância de Pessoa
+    pessoa.cumprimentar(); // chamada de método constante
+    return 0;
+}
+</code></pre>
+<div style="text-align: justify; margin-bottom: 1em;">Em ambos exemplos, a ortogonalidade é evidente na forma como Rust e C++ lidam com os conceitos fundamentais de orientação a objetos e gerenciamento de recursos. Rust impõe regras rigorosas para garantir segurança e prevenção de erros, enquanto C++ oferece mais flexibilidade, mas requer maior responsabilidade do programador para garantir a segurança e a eficiência do código.</div>
+
+<h2 id="instrucoes-de-controle">Instruções de Controle</h2>
+<div style="text-align: justify; margin-bottom: 1em;">Rust evita construções como goto que podem complicar o fluxo de controle. Em vez disso, incentiva o uso de estruturas de controle mais seguras e previsíveis, como if, match e loops.</div>
+
+<p>Em Rust:</p>
+<pre><code class="language-rust">fn main() {
+    let numero = 42;
+
+    if numero &lt; 0 {
+        println!(&quot;O número é negativo&quot;);
+    } else if numero &gt; 0 {
+        println!(&quot;O número é positivo&quot;);
+    } else {
+        println!(&quot;O número é zero&quot;);
+    }
+
+    let resposta = match numero {
+        0 =&gt; &quot;Zero&quot;,
+        1 =&gt; &quot;Um&quot;,
+        _ =&gt; &quot;Outro&quot;,
+    };
+
+    println!(&quot;Resposta: {}&quot;, resposta);
+
+    for i in 0..5 {
+        println!(&quot;Iteração {}&quot;, i);
+    }
+}
+</code></pre>
+<p>Em C++:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+int main() {
+    int numero = 42;
+
+    if (numero &lt; 0) {
+        std::cout &lt;&lt; &quot;O número é negativo&quot; &lt;&lt; std::endl;
+    } else if (numero &gt; 0) {
+        std::cout &lt;&lt; &quot;O número é positivo&quot; &lt;&lt; std::endl;
+    } else {
+        std::cout &lt;&lt; &quot;O número é zero&quot; &lt;&lt; std::endl;
+    }
+
+    switch (numero) {
+        case 0:
+            std::cout &lt;&lt; &quot;Zero&quot; &lt;&lt; std::endl;
+            break;
+        case 1:
+            std::cout &lt;&lt; &quot;Um&quot; &lt;&lt; std::endl;
+            break;
+        default:
+            std::cout &lt;&lt; &quot;Outro&quot; &lt;&lt; std::endl;
+            break;
+    }
+
+    for (int i = 0; i &lt; 5; ++i) {
+        std::cout &lt;&lt; &quot;Iteração &quot; &lt;&lt; i &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p><div style="text-align: justify; margin-bottom: 0.5em;">
+  <strong>if</strong>, <strong>else</strong> <strong>if</strong>, <strong>else</strong> <em>versus</em> <strong>if</strong>, <strong>else if</strong>, <strong>else</strong>: Tanto em Rust quanto em C++, a estrutura condicional <strong>if</strong>, <strong>else if</strong>, <strong>else</strong> é utilizada para ramificar o fluxo de controle com base em condições. Rust e C++ são bastante semelhantes nesse aspecto, promovendo clareza na expressão das condições.
+</div></p>
+</li>
+<li>
+<p><div style="text-align: justify; margin-bottom: 0.5em;">
+  <strong>match</strong> vs <strong>switch</strong>: Em Rust, match é uma expressão poderosa que cobre todas as possibilidades de um valor de maneira segura e exaustiva. No exemplo, _ é usado para capturar todos os outros casos não especificados. Em C++, switch é usado para a mesma finalidade, mas requer explicitamente um break para evitar a execução contínua de casos subsequentes.
+</div></p>
+</li>
+<li>
+<p><div style="text-align: justify; margin-bottom: 1em;">
+  <strong>Loops</strong>: Ambas as linguagens suportam <em>loops</em> for para iterar sobre uma faixa de valores. Rust usa .. para gerar uma faixa exclusiva (0 até 4 no exemplo), enquanto C++ usa &lt; para definir a condição de término do loop.
+</div></p>
+</li>
+</ul>
+<div style="text-align: justify; margin-bottom: 1em;">Rust, ao evitar construções como goto, promove um código mais estruturado e legível, incentivando o uso de construções de controle mais seguras e expressivas. C++ oferece mais flexibilidade em algumas áreas, mas também permite o uso de goto, o que pode complicar o entendimento e a manutenção do código, se mal utilizado.</div>
+
+<div style="text-align: justify; margin-bottom: 1em;">Em resumo, Rust e C++ proporcionam ferramentas poderosas para controle de fluxo, mas Rust, com suas abordagens mais modernas e restritivas, tende a promover práticas de programação mais seguras e legíveis, especialmente em cenários onde o controle de fluxo é crucial para a clareza do código.</div>
+
+<h2 id="tipos-de-dados-e-estruturas">Tipos de Dados e Estruturas</h2>
+<p>Rust oferece tipos de dados poderosos e seguros, como enums, structs e tuples, que são úteis e adequados para definir estruturas complexas de dados de forma clara e concisa.</p>
+<p>Em Rust:</p>
+<pre><code class="language-rust">// Definindo uma enumeração para representar diferentes tipos de formas geométricas
+enum Forma {
+    Retangulo { largura: u32, altura: u32 },
+    Circulo(f64),
+    Quadrado(u32),
+}
+
+// Definindo uma estrutura para representar uma pessoa
+struct Pessoa {
+    nome: String,
+    idade: u8,
+}
+
+// Definindo uma tupla para armazenar coordenadas
+struct Coordenadas(i32, i32);
+
+fn main() {
+    // Exemplos de uso dos tipos definidos
+    let retangulo = Forma::Retangulo { largura: 30, altura: 50 };
+    let circulo = Forma::Circulo(3.5);
+    let pessoa = Pessoa { nome: String::from(&quot;Alice&quot;), idade: 25 };
+    let coordenadas = Coordenadas(10, 20);
+
+    match retangulo {
+        Forma::Retangulo { largura, altura } =&gt; {
+            println!(&quot;Retângulo: largura = {}, altura = {}&quot;, largura, altura);
+        }
+        _ =&gt; {}
+    }
+
+    match circulo {
+        Forma::Circulo(raio) =&gt; {
+            println!(&quot;Círculo: raio = {}&quot;, raio);
+        }
+        _ =&gt; {}
+    }
+
+    println!(&quot;Pessoa: {} tem {} anos.&quot;, pessoa.nome, pessoa.idade);
+    println!(&quot;Coordenadas: ({}, {})&quot;, coordenadas.0, coordenadas.1);
+}
+</code></pre>
+<p>Em C++:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;tuple&gt;
+
+// Definindo uma enumeração para representar diferentes tipos de formas geométricas
+enum class Forma {
+    Retangulo,
+    Circulo,
+    Quadrado,
+};
+
+// Definindo uma estrutura para representar uma pessoa
+struct Pessoa {
+    std::string nome;
+    unsigned int idade;
+};
+
+// Usando uma tupla para armazenar coordenadas
+typedef std::tuple&lt;int, int&gt; Coordenadas;
+
+int main() {
+    // Exemplos de uso dos tipos definidos
+    Forma forma = Forma::Retangulo;
+    Pessoa pessoa = {&quot;Alice&quot;, 25};
+    Coordenadas coordenadas = std::make_tuple(10, 20);
+
+    switch (forma) {
+        case Forma::Retangulo:
+            std::cout &lt;&lt; &quot;Retângulo&quot; &lt;&lt; std::endl;
+            break;
+        case Forma::Circulo:
+            std::cout &lt;&lt; &quot;Círculo&quot; &lt;&lt; std::endl;
+            break;
+        case Forma::Quadrado:
+            std::cout &lt;&lt; &quot;Quadrado&quot; &lt;&lt; std::endl;
+            break;
+    }
+
+    std::cout &lt;&lt; &quot;Pessoa: &quot; &lt;&lt; pessoa.nome &lt;&lt; &quot; tem &quot; &lt;&lt; pessoa.idade &lt;&lt; &quot; anos.&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;Coordenadas: (&quot; &lt;&lt; std::get&lt;0&gt;(coordenadas) &lt;&lt; &quot;, &quot; &lt;&lt; std::get&lt;1&gt;(coordenadas) &lt;&lt; &quot;)&quot; &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li><div style="text-align: justify; margin-bottom: 0.5em;">Enums: Rust usa enums de forma poderosa, permitindo a definição de variantes com dados associados, como Forma::Retangulo { largura, altura }. C++ também tem enums, mas não suporta dados associados sem o uso de classes.</div></li>
+<li><div style="text-align: justify; margin-bottom: 0.5em;">Structs: Ambas as linguagens suportam structs para definir estruturas de dados. Rust permite métodos e implementações diretamente associadas às structs, enquanto em C++ é necessário usar classes para isso.</div></li>
+<li><div style="text-align: justify; margin-bottom: 1em;">Tuples: Rust e C++ suportam tuples para agrupar múltiplos valores em um único tipo. Rust usa a sintaxe (valor1, valor2) para criar e acessar tuples, enquanto C++ usa std::tuple e std::get para o mesmo propósito.</div></li>
+</ul>
+<div style="text-align: justify; margin-bottom: 1em;">Rust se destaca na segurança e na expressividade de seus tipos de dados, garantindo que cada valor tenha um único proprietário (propriedade de propriedade). Isso ajuda a prevenir erros comuns de gerenciamento de memória, como vazamentos e referências inválidas. Em contraste, C++ oferece mais flexibilidade, mas com um custo maior em termos de gerenciamento de memória seguro e legibilidade.</div>
+
+<h2 id="aspectos-da-sintaxe">Aspectos da Sintaxe</h2>
+<div style="text-align: justify; margin-bottom: 1em;">Rust possui uma sintaxe moderna que é projetada para ser clara e expressiva. Por exemplo, utiliza palavras-chave claras e não sobrecarrega o uso de operadores especiais. Identificadores descritivos são incentivados, o que melhora a legibilidade.</div>
+
+<div style="text-align: justify; margin-bottom: 1em;">Comparando com C++, Rust muitas vezes pode parecer mais verboso em certos aspectos (como o uso de mut para indicar mutabilidade), mas essa verbosidade também pode melhorar a legibilidade ao tornar as intenções do código mais claras. C++ tende a ser mais flexível em alguns aspectos, mas essa flexibilidade pode levar a códigos menos legíveis se não for usada com cuidado.</div>
+
+<div style="text-align: justify;">Em resumo, Rust foi projetado com foco na legibilidade, segurança e performance, procurando equilibrar simplicidade com poder. Embora seja diferente de C++ em muitos aspectos, ambos têm seus méritos e são capazes de produzir código legível, desde que os desenvolvedores sigam boas práticas de codificação. </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
