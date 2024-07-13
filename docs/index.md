@@ -55,4 +55,4 @@ Este projeto envolve a criação e implementação de uma criptomoeda utilizando
 A linguagem foi selecionada devido às suas características em termos de segurança, eficiência de concorrência e alto desempenho.
 </div>
 
-**Link para o repositório do projeto**: [https://github.com/seraphritt/projeto_LP](github.com/seraphritt/projeto_LP)
+**Link para o repositório do projeto**: https://github.com/seraphritt/projeto_LP
