@@ -54,3 +54,5 @@ Este projeto envolve a criação e implementação de uma criptomoeda utilizando
 <div style="text-align: justify; margin-bottom: 1em;">
 A linguagem foi selecionada devido às suas características em termos de segurança, eficiência de concorrência e alto desempenho.
 </div>
+
+**Link para o repositório do projeto**: [https://github.com/seraphritt/projeto_LP](github.com/seraphritt/projeto_LP)
